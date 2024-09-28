@@ -1,0 +1,45 @@
+<%- include('../partials/__head.ejs') %>
+<body>
+    <div class="container-scroller d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+        <%- include('../partials/__nav.ejs') %>
+        <div class="main-panel w-100">
+            <div class="content-wrapper d-flex align-items-center justify-content-center">
+                <div class="col grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Edit Data Dosen</h4>
+                            <form action="/dosen/update/<%= id %>" method="POST" class="forms-sample">
+                                <div class="form-group">
+                                    <label for="nama_dosen">Nama Dosen</label>
+                                    <input type="text" class="form-control" id="nama_dosen" name="nama_dosen" value="<%= nama_dosen %>" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nip">NIP</label>
+                                    <input type="text" class="form-control" id="nip" name="nip" value="<%= nip %>" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="jenis_kelamin">Jenis Kelamin</label>
+                                    <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" required>
+                                        <option value="L" <%= jenis_kelamin === 'L' ? 'selected' : '' %>>Laki-laki</option>
+                                        <option value="P" <%= jenis_kelamin === 'P' ? 'selected' : '' %>>Perempuan</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_users">User</label>
+                                    <select class="form-control" id="id_users" name="id_users" required>
+                                        <% users.forEach(function(user) { %>
+                                            <option value="<%= user.id_users %>" <%= id_users === user.id_users ? 'selected' : '' %>><%= user.email %></option>
+                                        <% }); %>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary mr-2">Simpan</button>
+                                <button type="button" class="btn btn-light" onclick="history.back()">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../partials/__foot.ejs') %>
