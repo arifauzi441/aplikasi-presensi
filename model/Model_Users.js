@@ -27,6 +27,24 @@ class Model_Users{
             })
         })
     }
+    
+    static storeData(data){
+        return new Promise((resolve, reject) => {
+            db.query(`insert into users (email, password, level_users) values (?,?,?)`, data, (err, rows) => {
+                if(err) return reject(err)
+                resolve(rows)
+            })
+        })
+    }
+    
+    static getUserMahasiswa(id){
+        return new Promise((resolve, reject) => {
+            db.query(`select * from users u join mahasiswa m on u.id_users = m.id_users where id_users = ?`, [id], (err, rows) => {
+                if(err) return reject(err)
+                resolve(rows)
+            })
+        })
+    }
 
 }
 
