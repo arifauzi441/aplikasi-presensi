@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require(`path`)
 var fs = require(`fs`)
+var multer = require(`multer`)
 const Model_Users = require(`../model/Model_Users`)
 const Model_Dosen = require(`../model/Model_Dosen`)
 const Model_Jadwal = require(`../model/Model_Jadwal`);

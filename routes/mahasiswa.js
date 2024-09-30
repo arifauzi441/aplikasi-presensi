@@ -46,7 +46,7 @@ router.use(auth)
 router.get('/beranda', async (req, res, next) => {
     let data = await Model_Users.getUserId(req.session.id)
     let dosen = await Model_Dosen.getByIdUser(req.session.id)
-    res.render(`users/admin/index`)
+    res.render(`landing_page/pagelanding`)
 });
 
 router.get('/matakuliah', async (req, res, next) => {
@@ -64,7 +64,7 @@ router.get(`/kuliah/detail/:id`, async (req, res, next) => {
 
     let jadwalDetail = await Model_Jadwal.getById(id_jadwal)
     
-    res.render(`matakuliah/detail`,{jadwal_detail})
+    res.render(`detail_matkul/detailmatkul`,{jadwal_detail})
 })
 
 router.get(`/kuliah/presensi/:id`, async (req, res, next) => {
