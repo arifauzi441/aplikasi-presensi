@@ -12,6 +12,8 @@ router.get(`/login`, async (req, res, next) => {
   res.render(`auth/login`)
 })
 
+
+
 router.post(`/log`, async (req, res, next) => {
   try {
     let {email, password} = req.body
