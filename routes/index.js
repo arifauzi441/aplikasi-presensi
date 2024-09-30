@@ -34,7 +34,25 @@ router.post(`/log`, async (req, res, next) => {
 
 router.get(`/register`, async (req, res, next) => {
   res.render(`auth/register`)
+})
 
+router.post(`/save`, async (req, res, next) => {
+  try {
+    let {email, password, level_users} = req.body
+    console.log(level_users)
+    let data = await Model_Users.getEmail(email)
+
+    if(data) return res.redirect(`/register`)
+
+    if(level_users === "admin") return res.redirect(`/register`)
+
+    await Model_Users.storeData([email, password, level_users])
+
+    res.redirect(`/login`)
+  } catch (error) {
+    console.log(error)
+    res.redirect(`/register`)
+  }
 })
 
 module.exports = router;
