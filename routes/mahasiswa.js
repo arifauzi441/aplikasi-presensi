@@ -56,7 +56,7 @@ router.get('/matakuliah', async (req, res, next) => {
 
 router.get('/jadwal-online', async (req, res, next) => {
     let jadwal = await Model_Jadwal.getJadwalByMahasiswa(req.session.id)
-    res.render(`users/admin/index`, {jadwal})
+    res.render(`jadwal-kuliah/jadwalkuliah`, {jadwal})
 });
 
 router.get(`/kuliah/detail/:id`, async (req, res, next) => {
