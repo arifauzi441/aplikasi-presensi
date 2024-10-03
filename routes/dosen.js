@@ -55,7 +55,7 @@ router.get('/matakuliah', async (req, res, next) => {
 
 router.get('/jadwal-online', async (req, res, next) => {
     let jadwal = await Model_Jadwal.getJadwalByDosen(req.session.id)
-    res.render(`users/admin/index`, {jadwal})
+    res.render(`jadwal-kuliah/jadwalkuliah`, {jadwal})
 });
 
 router.get(`/kuliah/detail/:id`, async (req, res, next) => {
@@ -172,7 +172,7 @@ router.get(`/kuliah/tugas/detail/:id`, async (req, res, next) => {
 
 router.get(`/kuliah/tugas/:id/create`, async (req, res, next) => {
     let id_jadwal = req.params.id
-    res.render(`tugas/create`,{id_jadwal})
+    res.render(`form-tugas/formtugas`,{id_jadwal})
 })
 
 router.post(`/kuliah/tugas/:id/store`, upload.single(`file_tugas`), async (req, res, next) => {
@@ -260,7 +260,7 @@ router.get(`/kuliah/materi/detail/:id`, async (req, res, next) => {
 
 router.get(`/kuliah/materi/:id/create`, async (req, res, next) => {
     let id_jadwal = req.params.id
-    res.render(`materi/create`,{id_jadwal})
+    res.render(`form-materi/formmateri`,{id_jadwal})
 })
 
 router.post(`/kuliah/materi/:id/store`, upload.single(`file_materi`), async (req, res, next) => {
