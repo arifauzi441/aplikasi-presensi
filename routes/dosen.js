@@ -178,7 +178,7 @@ router.get(`/kuliah/tugas/:id/create`, async (req, res, next) => {
 router.post(`/kuliah/tugas/:id/store`, upload.single(`file_tugas`), async (req, res, next) => {
     let id_jadwal = req.params.id
     try {
-        let {judul_tugas} = req.body
+        let {judul_tugas, tanggal_batas, jam_batas} = req.body
         let {file_tugas} = `/tugas/${req.file.filename}`
         
         let data = {
@@ -241,6 +241,94 @@ router.post(`/kuliah/tugas/:id/delete`, async (req, res, next) => {
     } catch (error) {
         console.log(error)
         res.redirect(`/kuliah/tugas/${id_jadwal}`)
+    }
+})
+
+router.get(`/kuliah/materi/:id`, async (req, res, next) => {
+    let id_jadwal = req.params.id
+    let data_materi = await Model_materi.getmateriByJadwal(id_jadwal)
+    
+    res.render(`/materi`, {data_materi})
+})
+
+router.get(`/kuliah/materi/detail/:id`, async (req, res, next) => {
+    let id_materi = req.params.id
+    let materiDetail = await Model_materi.getmateriById(id_materi)
+    
+    res.render(`materi/detail`, {materiDetail})
+})
+
+router.get(`/kuliah/materi/:id/create`, async (req, res, next) => {
+    let id_jadwal = req.params.id
+    res.render(`materi/create`,{id_jadwal})
+})
+
+router.post(`/kuliah/materi/:id/store`, upload.single(`file_materi`), async (req, res, next) => {
+    let id_jadwal = req.params.id
+    try {
+        let {judul_materi} = req.body
+        let {file_materi} = `/materi/${req.file.filename}`
+        
+        let data = {
+            id_jadwal,
+            judul_materi,
+            file_materi
+        }
+        await Model_materi.addmateri(data)
+        
+        res.redirect(`/kuliah/materi/:${id_jadwal}`)
+    } catch (error) {
+        console.log(error)
+        res.redirect(`/kuliah/materi/:${id_jadwal}`)
+    }
+})
+
+router.get(`/kuliah/materi/:id/edit`, async (req, res, next) => {
+    let id_materi = req.params.id
+    let materiDetail = await Model_materi.getmateriById(id_materi)
+    
+    res.render(`/`, {materiDetail})
+})
+
+router.post(`/kuliah/materi/:id/update`, upload.single(`file_materi`), async (req, res, next) => {
+    let id_materi = req.params.id
+    try {
+        let {judul_materi} = req.body
+        let materiDetail = await Model_materi.getmateriById(id_materi)
+        
+        let file_materi = ``
+        file_materi = (req.file) ? `/materi/${req.file.filename}` : materiDetail.file_materi 
+    
+        if(req.file) {
+            let pathFileLama = path.join(__dirname, `../public/${materiDetail.file_materi}`)
+            fs.unlinkSync(pathFileLama)
+        }
+        data = {
+            judul_materi,
+            file_materi
+        }
+        await Model_materi.updatemateri(id_materi, data)
+        res.redirect(`/kuliah/materi/${materiDetail.id_jadwal}`)
+    } catch (error) {
+        console.log(error)
+        res.redirect(`/kuliah/materi/${materiDetail.id_jadwal}`)
+    }
+})
+
+router.post(`/kuliah/materi/:id/delete`, async (req, res, next) => {
+    let id_materi = req.params.id
+    try {
+        let materiDetail = await Model_materi.getmateriById(id_materi) 
+        let id_jadwal = materiDetail.id_jadwal
+    
+        let pathFileLama = path.join(__dirname, `../public/${materiDetail.file_materi}`)
+        fs.unlinkSync(pathFileLama)
+    
+        await Model_materi.deletemateri(id_materi)
+        res.redirect(`/kuliah/materi/${id_jadwal}`)
+    } catch (error) {
+        console.log(error)
+        res.redirect(`/kuliah/materi/${id_jadwal}`)
     }
 })
 

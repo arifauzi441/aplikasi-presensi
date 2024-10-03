@@ -36,7 +36,7 @@ const upload = multer({ storage, fileFilter})
 
 const auth = async (req, res, next) => {
   let data = await Model_Users.getUserId(req.session.userId)
-  if(data && data.level_users === "dosen") return next()
+  if(data && data.level_users === "mahasiswa") return next()
     res.redirect(`/login`)
 }
 
@@ -45,7 +45,7 @@ router.use(auth)
 /* GET users listing. */
 router.get('/beranda', async (req, res, next) => {
     let data = await Model_Users.getUserId(req.session.id)
-    let dosen = await Model_Dosen.getByIdUser(req.session.id)
+    let dosen = await Model_Mahasiswa.getByIdUser(req.session.id)
     res.render(`landing_page/pagelanding`)
 });
 
