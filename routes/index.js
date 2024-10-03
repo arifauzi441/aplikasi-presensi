@@ -12,18 +12,17 @@ router.get(`/login`, async (req, res, next) => {
   res.render(`auth/login`)
 })
 
-
-
 router.post(`/log`, async (req, res, next) => {
   try {
     let {email, password} = req.body
-
+    
     let data = await Model_Users.getEmail(email)
     if(data.password !== password){
       return res.redirect(`/login`)
     }
-
+    
     req.session.userId = data.id_users
+    console.log(req.session)
 
     if(data.level_users === "admin") return res.redirect(`/admin/beranda`)
     if(data.level_users === "dosen") return res.redirect(`/dosen/beranda`)
