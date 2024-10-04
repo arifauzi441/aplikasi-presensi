@@ -126,14 +126,14 @@ router.get(`/kuliah/materi/:id`, async (req, res, next) => {
     let id_jadwal  = req.params.id
     let data_materi = await Model_Materi.getMateriByJadwal(id_jadwal)
 
-    res.render(`/materi`, {data_materi})
+    res.render(`materi_user/materi_user`, {data_materi})
 })
 
 router.get(`/kuliah/tugas/:id`, async (req, res, next) => {
     let id_jadwal = req.params.id
     let data_tugas = await Model_Tugas.getTugasByJadwal(id_jadwal)
     
-    res.render(`/tugas`, {data_tugas})
+    res.render(`tugas_user/tugas_user`, {data_tugas})
 })
 
 router.get(`/kuliah/tugas/detail/:id`, async (req, res, next) => {
@@ -142,7 +142,7 @@ router.get(`/kuliah/tugas/detail/:id`, async (req, res, next) => {
     let tugasDetail = await Model_Tugas.getTugasById(id_tugas)
     let pengumpulan = await Model_Pengumpulan.getPengumpulanByTugas(id_tugas, mahasiswa.id_mahasiswa)
 
-    res.render(`tugas/detail`,{tugasDetail, pengumpulan})
+    res.render(`detail_tugas/detail_tugas`,{tugasDetail, pengumpulan})
 })
 
 router.post(`/storepengumpulan/:id`, upload.single(`file_pengumpulan`), async (req, res, next) => {
