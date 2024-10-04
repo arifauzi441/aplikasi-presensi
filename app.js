@@ -8,8 +8,14 @@ var flash = require(`express-flash`);
 
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
-var mahasiswaRouter = require('./routes/mahasiswa');
-var dosenRouter = require('./routes/dosen');
+var jurusanRouter = require('./routes/admin/jurusan');
+var kelasRouter = require('./routes/admin/kelas');
+var matakuliahRouter = require('./routes/admin/matakuliah');
+var ruanganRouter = require('./routes/admin/ruangan');
+var jadwalRouter = require('./routes/admin/jadwal');
+var userRouter = require('./routes/admin/user');
+var mahasiswaRouter = require('./routes/admin/mahasiswa');
+var dosenRouter = require('./routes/admin/dosen');
 
 var app = express();
 
@@ -35,8 +41,14 @@ app.use(flash());
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
-app.use('/dosen', dosenRouter);
+app.use('/jurusan', jurusanRouter);
+app.use('/kelas', kelasRouter);
+app.use('/matakuliah', matakuliahRouter);
+app.use('/ruangan', ruanganRouter);
+app.use('/jadwal', jadwalRouter);
+app.use('/user', userRouter);
 app.use('/mahasiswa', mahasiswaRouter);
+app.use('/dosen', dosenRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
