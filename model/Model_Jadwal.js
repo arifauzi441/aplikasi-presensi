@@ -26,7 +26,13 @@ class Model_Jadwal{
 
     static getJadwalByMahasiswa(id){
         return new Promise((resolve, reject) => {
-            db.query(`select * from jadwal j join kelas k on k.id_kelas = j.id_kelas join mahasiswa m on m.id_kelas = j.id_kelas && j.id_jurusan = m.id_jurusan where m.id_users = ?`, [id], (err, rows) => {
+            db.query(`select * from jadwal j join kelas k on k.id_kelas = j.id_kelas
+                join jurusan ju on ju.id_jurusan = j.id_jurusan
+                join dosen d on d.id_dosen = j.id_dosen
+                join ruangan r on r.id_ruangan = j.id_ruangan
+                join matakuliah ma on ma.id_matakuliah = j.id_matakuliah
+                join semester s on s.id_semester = j.id_semester
+                join mahasiswa m on m.id_kelas = j.id_kelas && j.id_jurusan = m.id_jurusan where m.id_users = ?`, [id], (err, rows) => {
                 if(err) return reject(err)
                 resolve(rows)
             })

@@ -14,7 +14,7 @@ class Model_Mahasiswa{
 
     static getByIdUser(id){
         return new Promise((resolve, reject) => {
-            db.query(`select * from mahasiswa where id_users = ?`, [id], (err, rows) => {
+            db.query(`select * from mahasiswa m join jurusan j on m.id_jurusan = j.id_jurusan join kelas k on k.id_kelas = m.id_kelas where id_users = ?`, [id], (err, rows) => {
                 if(err) return reject(err)
                 resolve(rows[0])
             })

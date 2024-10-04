@@ -34,7 +34,7 @@
 
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="">
                             <i class='bx bx-bell icon' ></i>
                             <span class="text nav-text">Presence</span>
                         </a>
@@ -43,7 +43,7 @@
 
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="/mahasiswa/beranda">
                             <i class='bx bx-home icon' ></i>
                             <span class="text nav-text">Dashboard</span>
                         </a>
@@ -52,7 +52,7 @@
 
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="/mahasiswa/matakuliah">
                             <i class='bx bx-book-bookmark icon' ></i>
                             <span class="text nav-text">Matakuliah</span>
                         </a>
@@ -60,8 +60,8 @@
                 </ul>
                 
                 <ul class="menu-links">
-                    <li class="nav-link">
-                        <a href="#">
+                    <li class="/mahasiswa/jadwal-online">
+                        <a href="/mahasiswa/jadwal-online">
                             <i class='bx bx-book-content icon' ></i>
                             <span class="text nav-text">Jadwal</span>
                         </a>
@@ -82,7 +82,7 @@
             <div class="bottom-content">
                 <div class="hr-horizontal"></div>
                 <li class="">
-                    <a href="#">
+                    <a href="/logout">
                         <i class='bx bx-log-out icon' ></i>
                         <span class="text nav-text">Logout</span>
                     </a>
@@ -140,9 +140,9 @@
             <div class="profil">
 
                 <div class="ktr">
-                    <span class="bck">D3 - Teknik Informatika</span>
-                    <span class="nme">Vernanda M.H Manurung</span>
-                    <span class="nrp">3123522005</span>
+                    <span class="bck"><%= mahasiswa.nama_jurusan %></span>
+                    <span class="nme"><%= mahasiswa.nama_mahasiswa %></span>
+                    <span class="nrp"><%= mahasiswa.nrp %></span>
                 </div>
 
                 <div class="gmbr">
@@ -170,136 +170,23 @@
 
                 <div class="horizontal-scroll">
                     <div class="contain">
-
-                        <div class="ktk1">
-                            <span class="mt">Basis Data Lanjut</span>
-
-                            <div class="nd">
-                                <span>LUSIANA AGUSTIEN S.Kom., M.Kom</span>
+                        <% for( let i = 0; i < jadwal.length; i++ ) { %>
+                            <div class="ktk1">
+                                <span class="mt"><%= jadwal[i].nama_matakuliah %></span>
+    
+                                <div class="nd">
+                                    <span><%= jadwal[i].nama_dosen %></span>
+                                </div>
+                                
+                                <div class="wk">
+                                    <span><%= jadwal[i].hari %> (<%= jadwal[i].waktu %>)</span>
+                                </div>
+    
+                                <div class="ak">
+                                    <a href="/mahasiswa/kuliah/detail/<%= jadwal[i].id_jadwal %>">Akses Kuliah</a>
+                                </div>
                             </div>
-                            
-                            <div class="wk">
-                                <span>Selasa (08:00 - 09:40)</span>
-                            </div>
-
-                            <div class="ak">
-                                <a href="">Akses Kuliah</a>
-                            </div>
-                        </div>
-
-                        <div class="ktk2">
-                            <span class="mt">Basis Data Lanjut</span>
-
-                            <div class="nd">
-                                <span>LUSIANA AGUSTIEN S.Kom., M.Kom</span>
-                            </div>
-                            
-                            <div class="wk">
-                                <span>Selasa (08:00 - 09:40)</span>
-                            </div>
-
-                            <div class="ak">
-                                <a href="">Akses Kuliah</a>
-                            </div>
-                        </div>
-
-                        <div class="ktk3">
-                            <span class="mt">Basis Data Lanjut</span>
-
-                            <div class="nd">
-                                <span>LUSIANA AGUSTIEN S.Kom., M.Kom</span>
-                            </div>
-                            
-                            <div class="wk">
-                                <span>Selasa (08:00 - 09:40)</span>
-                            </div>
-
-                            <div class="ak">
-                                <a href="">Akses Kuliah</a>
-                            </div>
-                        </div>
-
-                        <div class="ktk4">
-                            <span class="mt">Basis Data Lanjut</span>
-
-                            <div class="nd">
-                                <span>LUSIANA AGUSTIEN S.Kom., M.Kom</span>
-                            </div>
-                            
-                            <div class="wk">
-                                <span>Selasa (08:00 - 09:40)</span>
-                            </div>
-
-                            <div class="ak">
-                                <a href="">Akses Kuliah</a>
-                            </div>
-                        </div>
-
-                        <div class="ktk1">
-                            <span class="mt">Basis Data Lanjut</span>
-
-                            <div class="nd">
-                                <span>LUSIANA AGUSTIEN S.Kom., M.Kom</span>
-                            </div>
-                            
-                            <div class="wk">
-                                <span>Selasa (08:00 - 09:40)</span>
-                            </div>
-
-                            <div class="ak">
-                                <a href="">Akses Kuliah</a>
-                            </div>
-                        </div>
-
-                        <div class="ktk2">
-                            <span class="mt">Basis Data Lanjut</span>
-
-                            <div class="nd">
-                                <span>LUSIANA AGUSTIEN S.Kom., M.Kom</span>
-                            </div>
-                            
-                            <div class="wk">
-                                <span>Selasa (08:00 - 09:40)</span>
-                            </div>
-
-                            <div class="ak">
-                                <a href="">Akses Kuliah</a>
-                            </div>
-                        </div>
-
-                        <div class="ktk3">
-                            <span class="mt">Basis Data Lanjut</span>
-
-                            <div class="nd">
-                                <span>LUSIANA AGUSTIEN S.Kom., M.Kom</span>
-                            </div>
-                            
-                            <div class="wk">
-                                <span>Selasa (08:00 - 09:40)</span>
-                            </div>
-
-                            <div class="ak">
-                                <a href="">Akses Kuliah</a>
-                            </div>
-                        </div>
-
-                        <div class="ktk4">
-                            <span class="mt">Basis Data Lanjut</span>
-
-                            <div class="nd">
-                                <span>LUSIANA AGUSTIEN S.Kom., M.Kom</span>
-                            </div>
-                            
-                            <div class="wk">
-                                <span>Selasa (08:00 - 09:40)</span>
-                            </div>
-
-                            <div class="ak">
-                                <a href="">Akses Kuliah</a>
-                            </div>
-                        </div>
-
-                        
+                        <% } %>
                     </div>
                 </div>
                 

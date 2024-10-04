@@ -139,75 +139,32 @@
         <div class="hari senin">
             <span>Senin</span>
         </div>
-
-        <div class="isi-jadwal">
-            <div class="matk">
-                <span >Metodologi Agile</span>
-            </div>
-            
-            <div class="isi-jarak">
-                <div class="kelas">
-                    <span>Kelas :</span>
-                    <span>3 D3PSDKU-SM IT kelas A</span>
+        <% for( let i = 0; i < jadwal.length; i++ ) { %>
+            <% if (jadwal[i].hari === "senin") { %>
+                <div class="isi-jadwal">
+                    <div class="matk">
+                        <span ><%= jadwal[i].nama_matakuliah %></span>
+                    </div>
+                    
+                    <div class="isi-jarak">
+                        <div class="kelas">
+                            <span>Kelas :</span>
+                            <span><%= jadwal[i].semester %> <%= jadwal[i].nama_jurusan %> kelas <%= jadwal[i].nama_kelas %></span>
+                        </div>
+                
+                        <div class="waktu">
+                            <span>Waktu :</span>
+                            <span><%= jadwal[i].waktu %> WIB</span>
+                        </div>
+                
+                        <div class="ruangan">
+                            <span>Ruangan :</span>
+                            <span><%= jadwal[i].nama_ruangan %></span>
+                        </div>
+                    </div>
                 </div>
-        
-                <div class="waktu">
-                    <span>Waktu :</span>
-                    <span>10:30 - 12:10 WIB</span>
-                </div>
-        
-                <div class="ruangan">
-                    <span>Ruangan :</span>
-                    <span>PSDKU-SM-K-101</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="isi-jadwal">
-            <div class="matk">
-                <span >Metodologi Agile</span>
-            </div>
-            
-            <div class="isi-jarak">
-                <div class="kelas">
-                    <span>Kelas :</span>
-                    <span>3 D3PSDKU-SM IT kelas A</span>
-                </div>
-        
-                <div class="waktu">
-                    <span>Waktu :</span>
-                    <span>10:30 - 12:10 WIB</span>
-                </div>
-        
-                <div class="ruangan">
-                    <span>Ruangan :</span>
-                    <span>PSDKU-SM-K-101</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="isi-jadwal">
-            <div class="matk">
-                <span >Metodologi Agile</span>
-            </div>
-            
-            <div class="isi-jarak">
-                <div class="kelas">
-                    <span>Kelas :</span>
-                    <span>3 D3PSDKU-SM IT kelas A</span>
-                </div>
-        
-                <div class="waktu">
-                    <span>Waktu :</span>
-                    <span>10:30 - 12:10 WIB</span>
-                </div>
-        
-                <div class="ruangan">
-                    <span>Ruangan :</span>
-                    <span>PSDKU-SM-K-101</span>
-                </div>
-            </div>
-        </div>
+            <% } %>
+        <% } %>
 
     </div>
 
@@ -217,74 +174,32 @@
             <span>Selasa</span>
         </div>
 
-        <div class="isi-jadwal">
-            <div class="matk">
-                <span >Metodologi Agile</span>
-            </div>
-            
-            <div class="isi-jarak">
-                <div class="kelas">
-                    <span>Kelas :</span>
-                    <span>3 D3PSDKU-SM IT kelas A</span>
+        <% for( let i = 0; i < jadwal.length; i++ ) { %>
+            <% if (jadwal[i].hari === "selasa") { %>
+                <div class="isi-jadwal">
+                    <div class="matk">
+                        <span ><%= jadwal[i].nama_matakuliah %></span>
+                    </div>
+                    
+                    <div class="isi-jarak">
+                        <div class="kelas">
+                            <span>Kelas :</span>
+                            <span><%= jadwal[i].semester %> <%= jadwal[i].nama_jurusan %> kelas <%= jadwal[i].nama_kelas %></span>
+                        </div>
+                
+                        <div class="waktu">
+                            <span>Waktu :</span>
+                            <span><%= jadwal[i].waktu %> WIB</span>
+                        </div>
+                
+                        <div class="ruangan">
+                            <span>Ruangan :</span>
+                            <span><%= jadwal[i].nama_ruangan %></span>
+                        </div>
+                    </div>
                 </div>
-        
-                <div class="waktu">
-                    <span>Waktu :</span>
-                    <span>10:30 - 12:10 WIB</span>
-                </div>
-        
-                <div class="ruangan">
-                    <span>Ruangan :</span>
-                    <span>PSDKU-SM-K-101</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="isi-jadwal">
-            <div class="matk">
-                <span >Metodologi Agile</span>
-            </div>
-            
-            <div class="isi-jarak">
-                <div class="kelas">
-                    <span>Kelas :</span>
-                    <span>3 D3PSDKU-SM IT kelas A</span>
-                </div>
-        
-                <div class="waktu">
-                    <span>Waktu :</span>
-                    <span>10:30 - 12:10 WIB</span>
-                </div>
-        
-                <div class="ruangan">
-                    <span>Ruangan :</span>
-                    <span>PSDKU-SM-K-101</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="isi-jadwal">
-            <div class="matk">
-                <span >Metodologi Agile</span>
-            </div>
-            
-            <div class="isi-jarak">
-                <div class="kelas">
-                    <span>Kelas :</span>
-                    <span>3 D3PSDKU-SM IT kelas A</span>
-                </div>
-        
-                <div class="waktu">
-                    <span>Waktu :</span>
-                    <span>10:30 - 12:10 WIB</span>
-                </div>
-        
-                <div class="ruangan">
-                    <span>Ruangan :</span>
-                    <span>PSDKU-SM-K-101</span>
-                </div>
-            </div>
-        </div>
+            <% } %>
+        <% } %>
 
     </div>
 
@@ -295,74 +210,32 @@
             <span>Rabu</span>
         </div>
 
-        <div class="isi-jadwal">
-            <div class="matk">
-                <span >Metodologi Agile</span>
-            </div>
-            
-            <div class="isi-jarak">
-                <div class="kelas">
-                    <span>Kelas :</span>
-                    <span>3 D3PSDKU-SM IT kelas A</span>
+        <% for( let i = 0; i < jadwal.length; i++ ) { %>
+            <% if (jadwal[i].hari === "rabu") { %>
+                <div class="isi-jadwal">
+                    <div class="matk">
+                        <span ><%= jadwal[i].nama_matakuliah %></span>
+                    </div>
+                    
+                    <div class="isi-jarak">
+                        <div class="kelas">
+                            <span>Kelas :</span>
+                            <span><%= jadwal[i].semester %> <%= jadwal[i].nama_jurusan %> kelas <%= jadwal[i].nama_kelas %></span>
+                        </div>
+                
+                        <div class="waktu">
+                            <span>Waktu :</span>
+                            <span><%= jadwal[i].waktu %> WIB</span>
+                        </div>
+                
+                        <div class="ruangan">
+                            <span>Ruangan :</span>
+                            <span><%= jadwal[i].nama_ruangan %></span>
+                        </div>
+                    </div>
                 </div>
-        
-                <div class="waktu">
-                    <span>Waktu :</span>
-                    <span>10:30 - 12:10 WIB</span>
-                </div>
-        
-                <div class="ruangan">
-                    <span>Ruangan :</span>
-                    <span>PSDKU-SM-K-101</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="isi-jadwal">
-            <div class="matk">
-                <span >Metodologi Agile</span>
-            </div>
-            
-            <div class="isi-jarak">
-                <div class="kelas">
-                    <span>Kelas :</span>
-                    <span>3 D3PSDKU-SM IT kelas A</span>
-                </div>
-        
-                <div class="waktu">
-                    <span>Waktu :</span>
-                    <span>10:30 - 12:10 WIB</span>
-                </div>
-        
-                <div class="ruangan">
-                    <span>Ruangan :</span>
-                    <span>PSDKU-SM-K-101</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="isi-jadwal">
-            <div class="matk">
-                <span >Metodologi Agile</span>
-            </div>
-            
-            <div class="isi-jarak">
-                <div class="kelas">
-                    <span>Kelas :</span>
-                    <span>3 D3PSDKU-SM IT kelas A</span>
-                </div>
-        
-                <div class="waktu">
-                    <span>Waktu :</span>
-                    <span>10:30 - 12:10 WIB</span>
-                </div>
-        
-                <div class="ruangan">
-                    <span>Ruangan :</span>
-                    <span>PSDKU-SM-K-101</span>
-                </div>
-            </div>
-        </div>
+            <% } %>
+        <% } %>
 
     </div>
 
@@ -373,74 +246,32 @@
             <span>Kamis</span>
         </div>
 
-        <div class="isi-jadwal">
-            <div class="matk">
-                <span >Metodologi Agile</span>
-            </div>
-            
-            <div class="isi-jarak">
-                <div class="kelas">
-                    <span>Kelas :</span>
-                    <span>3 D3PSDKU-SM IT kelas A</span>
+        <% for( let i = 0; i < jadwal.length; i++ ) { %>
+            <% if (jadwal[i].hari === "kamis") { %>
+                <div class="isi-jadwal">
+                    <div class="matk">
+                        <span ><%= jadwal[i].nama_matakuliah %></span>
+                    </div>
+                    
+                    <div class="isi-jarak">
+                        <div class="kelas">
+                            <span>Kelas :</span>
+                            <span><%= jadwal[i].semester %> <%= jadwal[i].nama_jurusan %> kelas <%= jadwal[i].nama_kelas %></span>
+                        </div>
+                
+                        <div class="waktu">
+                            <span>Waktu :</span>
+                            <span><%= jadwal[i].waktu %> WIB</span>
+                        </div>
+                
+                        <div class="ruangan">
+                            <span>Ruangan :</span>
+                            <span><%= jadwal[i].nama_ruangan %></span>
+                        </div>
+                    </div>
                 </div>
-        
-                <div class="waktu">
-                    <span>Waktu :</span>
-                    <span>10:30 - 12:10 WIB</span>
-                </div>
-        
-                <div class="ruangan">
-                    <span>Ruangan :</span>
-                    <span>PSDKU-SM-K-101</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="isi-jadwal">
-            <div class="matk">
-                <span >Metodologi Agile</span>
-            </div>
-            
-            <div class="isi-jarak">
-                <div class="kelas">
-                    <span>Kelas :</span>
-                    <span>3 D3PSDKU-SM IT kelas A</span>
-                </div>
-        
-                <div class="waktu">
-                    <span>Waktu :</span>
-                    <span>10:30 - 12:10 WIB</span>
-                </div>
-        
-                <div class="ruangan">
-                    <span>Ruangan :</span>
-                    <span>PSDKU-SM-K-101</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="isi-jadwal">
-            <div class="matk">
-                <span >Metodologi Agile</span>
-            </div>
-            
-            <div class="isi-jarak">
-                <div class="kelas">
-                    <span>Kelas :</span>
-                    <span>3 D3PSDKU-SM IT kelas A</span>
-                </div>
-        
-                <div class="waktu">
-                    <span>Waktu :</span>
-                    <span>10:30 - 12:10 WIB</span>
-                </div>
-        
-                <div class="ruangan">
-                    <span>Ruangan :</span>
-                    <span>PSDKU-SM-K-101</span>
-                </div>
-            </div>
-        </div>
+            <% } %>
+        <% } %>
 
     </div>
 
@@ -450,75 +281,32 @@
             <span>Jumat</span>
         </div>
 
-        <div class="isi-jadwal">
-            <div class="matk">
-                <span >Metodologi Agile</span>
-            </div>
-            
-            <div class="isi-jarak">
-                <div class="kelas">
-                    <span>Kelas :</span>
-                    <span>3 D3PSDKU-SM IT kelas A</span>
+        <% for( let i = 0; i < jadwal.length; i++ ) { %>
+            <% if (jadwal[i].hari === "jumat") { %>
+                <div class="isi-jadwal">
+                    <div class="matk">
+                        <span ><%= jadwal[i].nama_matakuliah %></span>
+                    </div>
+                    
+                    <div class="isi-jarak">
+                        <div class="kelas">
+                            <span>Kelas :</span>
+                            <span><%= jadwal[i].semester %> <%= jadwal[i].nama_jurusan %> kelas <%= jadwal[i].nama_kelas %></span>
+                        </div>
+                
+                        <div class="waktu">
+                            <span>Waktu :</span>
+                            <span><%= jadwal[i].waktu %> WIB</span>
+                        </div>
+                
+                        <div class="ruangan">
+                            <span>Ruangan :</span>
+                            <span><%= jadwal[i].nama_ruangan %></span>
+                        </div>
+                    </div>
                 </div>
-        
-                <div class="waktu">
-                    <span>Waktu :</span>
-                    <span>10:30 - 12:10 WIB</span>
-                </div>
-        
-                <div class="ruangan">
-                    <span>Ruangan :</span>
-                    <span>PSDKU-SM-K-101</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="isi-jadwal">
-            <div class="matk">
-                <span >Metodologi Agile</span>
-            </div>
-            
-            <div class="isi-jarak">
-                <div class="kelas">
-                    <span>Kelas :</span>
-                    <span>3 D3PSDKU-SM IT kelas A</span>
-                </div>
-        
-                <div class="waktu">
-                    <span>Waktu :</span>
-                    <span>10:30 - 12:10 WIB</span>
-                </div>
-        
-                <div class="ruangan">
-                    <span>Ruangan :</span>
-                    <span>PSDKU-SM-K-101</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="isi-jadwal">
-            <div class="matk">
-                <span >Metodologi Agile</span>
-            </div>
-            
-            <div class="isi-jarak">
-                <div class="kelas">
-                    <span>Kelas :</span>
-                    <span>3 D3PSDKU-SM IT kelas A</span>
-                </div>
-        
-                <div class="waktu">
-                    <span>Waktu :</span>
-                    <span>10:30 - 12:10 WIB</span>
-                </div>
-        
-                <div class="ruangan">
-                    <span>Ruangan :</span>
-                    <span>PSDKU-SM-K-101</span>
-                </div>
-            </div>
-        </div>
-
+            <% } %>
+        <% } %>
     </div>
 
 </section>

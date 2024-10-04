@@ -12,7 +12,7 @@ class Model_Presensi{
 
     static getNowPresensiByJadwal(id){
         return new Promise((resolve, reject) => {
-            db.query(`select * from presensi order by id_presensi desc where id_jadwal = ?`, [id], (err, rows) => {
+            db.query(`select * from presensi where id_jadwal = ? order by id_presensi desc`, [id], (err, rows) => {
                 if(err) return reject(err)
                 resolve(rows[0])
             })

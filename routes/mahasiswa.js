@@ -44,18 +44,19 @@ router.use(auth)
 
 /* GET users listing. */
 router.get('/beranda', async (req, res, next) => {
-    let data = await Model_Users.getUserId(req.session.id)
-    let dosen = await Model_Mahasiswa.getByIdUser(req.session.id)
-    res.render(`landing_page/pagelanding`)
+    let data = await Model_Users.getUserId(req.session.userId)
+    let mahasiswa = await Model_Mahasiswa.getByIdUser(req.session.userId)
+    let jadwal = await Model_Jadwal.getJadwalByMahasiswa(req.session.userId)
+    res.render(`landing_page/pagelanding`,{mahasiswa, jadwal})
 });
 
 router.get('/matakuliah', async (req, res, next) => {
-    let jadwal = await Model_Jadwal.getJadwalByMahasiswa(req.session.id)
+    let jadwal = await Model_Jadwal.getJadwalByMahasiswa(req.session.userId)
     res.render(`matakuliah/matakuliah`, {jadwal})
 });
 
 router.get('/jadwal-online', async (req, res, next) => {
-    let jadwal = await Model_Jadwal.getJadwalByMahasiswa(req.session.id)
+    let jadwal = await Model_Jadwal.getJadwalByMahasiswa(req.session.userId)
     res.render(`jadwal-kuliah/jadwalkuliah`, {jadwal})
 });
 
@@ -64,7 +65,7 @@ router.get(`/kuliah/detail/:id`, async (req, res, next) => {
 
     let jadwalDetail = await Model_Jadwal.getById(id_jadwal)
     
-    res.render(`detail_matkul/detailmatkul`,{jadwal_detail})
+    res.render(`detail_matkul/detailmatkul`,{jadwalDetail})
 })
 
 router.get(`/kuliah/presensi/:id`, async (req, res, next) => {

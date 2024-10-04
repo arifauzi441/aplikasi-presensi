@@ -56,4 +56,11 @@ router.post(`/save`, async (req, res, next) => {
   }
 })
 
+router.get(`/logout`, async (req, res, next) => {
+  req.session.destroy(err => {
+    if(err) return res.redirect(`/mahasiswa/beranda`)
+      res.redirect(`/login`)
+  })
+})
+
 module.exports = router;
