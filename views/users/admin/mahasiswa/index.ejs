@@ -1,0 +1,56 @@
+<%- include('../partials/__head.ejs') %>
+<body>
+<div class="container-scroller">
+    <%- include('../partials/__nav.ejs') %>
+    <div class="main-panel">
+        <%- include('../partials/__messages.ejs') %>
+        <div class="content-wrapper">
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Data Mahasiswa</h4>
+                                <a href="/mahasiswa/create" class="btn btn-sm btn-success mb-3">Tambah Mahasiswa</a>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama Mahasiswa</th>
+                                                <th>NRP</th>
+                                                <th>Jenis Kelamin</th>
+                                                <th>Kelas</th>
+                                                <th>Jurusan</th>
+                                                <th>User</th>
+                                                <th colspan="2">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% for(var i=0; i < data.length; i++){ %>
+                                            <tr>
+                                                <th scope="row"><%= (i+1) %></th>
+                                                <td><%= data[i].nama_mahasiswa %></td>
+                                                <td><%= data[i].nrp %></td>
+                                                <td><%= data[i].jenis_kelamin %></td>
+                                                <td><%= data[i].nama_kelas %></td>
+                                                <td><%= data[i].nama_jurusan %></td>
+                                                <td><%= data[i].email %></td>
+                                                <td>
+                                                    <a href="/mahasiswa/edit/<%= data[i].id_mahasiswa %>" class="btn btn-sm btn-warning">Edit</a>
+                                                    <a href="/mahasiswa/delete/<%= data[i].id_mahasiswa %>" class="btn btn-sm btn-danger">Delete</a>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../partials/__foot.ejs') %>

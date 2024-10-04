@@ -1,0 +1,58 @@
+<%- include('../partials/__head.ejs') %>
+<body>
+<div class="container-scroller">
+    <%- include('../partials/__nav.ejs') %>
+    <div class="main-panel">
+        <%- include('../partials/__messages.ejs') %>
+        <div class="content-wrapper">
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Data Jadwal</h4>
+                                <a href="/jadwal/create" class="btn btn-sm btn-success mb-3">Tambah Jadwal</a>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Hari</th>
+                                                <th>Kelas</th>
+                                                <th>Mata Kuliah</th>
+                                                <th>Jurusan</th>
+                                                <th>Ruangan</th>
+                                                <th>Dosen</th>
+                                                <th>Waktu</th>
+                                                <th colspan="2">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% for(var i=0; i < data.length; i++){ %>
+                                            <tr>
+                                                <th scope="row"><%= (i+1) %></th>
+                                                <td><%= data[i].hari %></td>
+                                                <td><%= data[i].nama_kelas %></td>
+                                                <td><%= data[i].nama_matakuliah %></td>
+                                                <td><%= data[i].nama_jurusan %></td>
+                                                <td><%= data[i].nama_ruangan %></td>
+                                                <td><%= data[i].nama_dosen %></td>
+                                                <td><%= data[i].waktu %></td>
+                                                <td>
+                                                    <a href="/jadwal/edit/<%= data[i].id_jadwal %>" class="btn btn-sm btn-warning">Edit</a>
+                                                    <a href="/jadwal/delete/<%= data[i].id_jadwal %>" class="btn btn-sm btn-danger">Delete</a>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../partials/__foot.ejs') %>
