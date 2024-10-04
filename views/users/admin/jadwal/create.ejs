@@ -1,0 +1,70 @@
+<%- include('../partials/__head.ejs') %>
+<%- include('../partials/__nav.ejs') %>
+<div class="content-wrapper d-flex align-items-center justify-content-center">
+    <div class="col grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Tambah Jadwal</h4> 
+                <form action="/jadwal/store" method="POST" class="forms-sample">
+                    <div class="form-group">
+                        <label for="hari">Hari</label>
+                        <select class="form-control" id="hari" name="hari" required>
+                            <option value="senin">Senin</option>
+                            <option value="selasa">Selasa</option>
+                            <option value="rabu">Rabu</option>
+                            <option value="kamis">Kamis</option>
+                            <option value="jumat">Jumat</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_kelas">Kelas</label>
+                        <select class="form-control" id="id_kelas" name="id_kelas" required>
+                            <% kelas.forEach(function(kelas) { %>
+                                <option value="<%= kelas.id_kelas %>"><%= kelas.nama_kelas %></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_matakuliah">Mata Kuliah</label>
+                        <select class="form-control" id="id_matakuliah" name="id_matakuliah" required>
+                            <% matakuliah.forEach(function(matakuliah) { %>
+                                <option value="<%= matakuliah.id_matakuliah %>"><%= matakuliah.nama_matakuliah %></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_jurusan">Jurusan</label>
+                        <select class="form-control" id="id_jurusan" name="id_jurusan" required>
+                            <% jurusan.forEach(function(jurusan) { %>
+                                <option value="<%= jurusan.id_jurusan %>"><%= jurusan.nama_jurusan %></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_ruangan">Ruangan</label>
+                        <select class="form-control" id="id_ruangan" name="id_ruangan" required>
+                            <% ruangan.forEach(function(ruangan) { %>
+                                <option value="<%= ruangan.id_ruangan %>"><%= ruangan.nama_ruangan %></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_dosen">Dosen</label>
+                        <select class="form-control" id="id_dosen" name="id_dosen" required>
+                            <% dosen.forEach(function(dosen) { %>
+                                <option value="<%= dosen.id_dosen %>"><%= dosen.nama_dosen %></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="waktu">Waktu</label>
+                        <input type="date" class="form-control" id="waktu" name="waktu" placeholder="Waktu" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button type="button" class="btn btn-light" onclick="history.back()">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../partials/__foot.ejs') %>

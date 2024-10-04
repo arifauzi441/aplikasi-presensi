@@ -160,14 +160,14 @@ router.get(`/kuliah/tugas/:id`, async (req, res, next) => {
     let id_jadwal = req.params.id
     let data_tugas = await Model_Tugas.getTugasByJadwal(id_jadwal)
     
-    res.render(`/tugas`, {data_tugas})
+    res.render(`upload_tugas/upload_tugas_dosen`, {data_tugas})
 })
 
 router.get(`/kuliah/tugas/detail/:id`, async (req, res, next) => {
     let id_tugas = req.params.id
     let tugasDetail = await Model_Tugas.getTugasById(id_tugas)
     
-    res.render(`tugas/detail`, {tugasDetail})
+    res.render(`detail_tugas/detail_tugas` , {data_tugas})
 })
 
 router.get(`/kuliah/tugas/:id/create`, async (req, res, next) => {
@@ -248,7 +248,7 @@ router.get(`/kuliah/materi/:id`, async (req, res, next) => {
     let id_jadwal = req.params.id
     let data_materi = await Model_materi.getmateriByJadwal(id_jadwal)
     
-    res.render(`/materi`, {data_materi})
+    res.render(`upload_materi/upload_materi_dosen`, {data_materi})
 })
 
 router.get(`/kuliah/materi/detail/:id`, async (req, res, next) => {

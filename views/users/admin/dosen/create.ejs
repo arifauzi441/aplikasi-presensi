@@ -1,0 +1,39 @@
+<%- include('../partials/__head.ejs') %>
+<%- include('../partials/__nav.ejs') %>
+<div class="content-wrapper d-flex align-items-center justify-content-center">
+    <div class="col grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Tambah Dosen</h4> 
+                <form action="/dosen/store" method="POST" class="forms-sample">
+                    <div class="form-group">
+                        <label for="nama_dosen">Nama Dosen</label>
+                        <input type="text" class="form-control" id="nama_dosen" name="nama_dosen" placeholder="Nama Dosen" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nip">NIP</label>
+                        <input type="text" class="form-control" id="nip" name="nip" placeholder="NIP" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="jenis_kelamin">Jenis Kelamin</label>
+                        <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" required>
+                            <option value="L">Laki-laki</option>
+                            <option value="P">Perempuan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_users">User</label>
+                        <select class="form-control" id="id_users" name="id_users" required>
+                            <% users.forEach(function(user) { %>
+                                <option value="<%= user.id_users %>"><%= user.email %></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button type="button" class="btn btn-light" onclick="history.back()">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../partials/__foot.ejs') %>

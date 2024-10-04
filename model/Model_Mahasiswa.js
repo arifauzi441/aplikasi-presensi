@@ -1,26 +1,80 @@
-const db = require(`../config/db`)
+const connection = require('../config/db');
 
-class Model_Mahasiswa{
-    static getByIdJadwal(id){
+class Model_Mahasiswa {
+
+    static async getAll() {
         return new Promise((resolve, reject) => {
-            db.query(`select * from mahasiswa m join jurusan ju on m.id_jurusan = ju.id_jurusan
-                join jadwal j on j.id_jurusan = ju.id_jurusan
-                where j.id_jurusan = m.id_jurusan && j.id_kelas = m.id_kelas && j.id_jadwal = ?`, [id], (err, rows) => {
-                if(err) return reject(err)
-                resolve(rows)
-            })
-        })
+            connection.query(`SELECT m.*, k.nama_kelas, j.nama_jurusan, u.email, u.level_users 
+                              FROM mahasiswa m 
+                              JOIN kelas k ON m.id_kelas = k.id_kelas 
+                              JOIN jurusan j ON m.id_jurusan = j.id_jurusan 
+                              JOIN users u ON m.id_users = u.id_users 
+                              ORDER BY m.id_mahasiswa DESC`, (err, rows) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(rows);
+                }
+            });
+        });
     }
 
-    static getByIdUser(id){
+    static async store(data) {
         return new Promise((resolve, reject) => {
-            db.query(`select * from mahasiswa m join jurusan j on m.id_jurusan = j.id_jurusan join kelas k on k.id_kelas = m.id_kelas where id_users = ?`, [id], (err, rows) => {
-                if(err) return reject(err)
-                resolve(rows[0])
-            })
-        })
+            connection.query('INSERT INTO mahasiswa SET ?', data, (err, result) => {
+                if (err) {
+                    reject(err);
+                    console.log(err);
+                } else {
+                    resolve(result);
+                    console.log(result);
+                }
+            });
+        });
     }
-    
+
+    static async getId(id) {
+        return new Promise((resolve, reject) => {
+            connection.query(`SELECT m.*, k.nama_kelas, j.nama_jurusan, u.email, u.level_users 
+                              FROM mahasiswa m 
+                              JOIN kelas k ON m.id_kelas = k.id_kelas 
+                              JOIN jurusan j ON m.id_jurusan = j.id_jurusan 
+                              JOIN users u ON m.id_users = u.id_users 
+                              WHERE m.id_mahasiswa = ?`, [id], (err, rows) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(rows);
+                    console.log(rows);
+                }
+            });
+        });
+    }
+
+    static async update(id, data) {
+        return new Promise((resolve, reject) => {
+            connection.query('UPDATE mahasiswa SET ? WHERE id_mahasiswa = ?', [data, id], (err, result) => {
+                if (err) {
+                    reject(err);
+                    console.log(err);
+                } else {
+                    resolve(result);
+                }
+            });
+        });
+    }
+
+    static async delete(id) {
+        return new Promise((resolve, reject) => {
+            connection.query('DELETE FROM mahasiswa WHERE id_mahasiswa = ?', [id], (err, result) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            });
+        });
+    }
 }
 
-module.exports = Model_Mahasiswa
+module.exports = Model_Mahasiswa;
