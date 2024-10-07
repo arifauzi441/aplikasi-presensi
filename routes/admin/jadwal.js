@@ -42,9 +42,9 @@ routes.get('/create', async (req, res, next) => {
 routes.post('/store', async (req, res, next) => {
     try {
         let { hari, id_kelas, id_matakuliah, id_jurusan, id_ruangan, id_dosen, waktu } = req.body;
-        let data = { hari, id_kelas, id_matakuliah, id_jurusan, id_ruangan, id_dosen, waktu };
+        let data = { hari, id_kelas, id_matakuliah, id_jurusan, id_ruangan, id_dosen, waktu, id_semester:1 };
         await Model_Jadwal.store(data);
-        res.redirect('/jadwal');
+        res.redirect('/admin/jadwal');
     } catch (err) {
         console.log(err);
         next(err);
@@ -55,20 +55,21 @@ routes.get('/edit/:id', async (req, res, next) => {
     try {
         let id = req.params.id;
         let data = await Model_Jadwal.getId(id);
+        console.log(data)
         let kelas = await Model_Kelas.getAll();
         let matakuliah = await Model_Matakuliah.getAll();
         let jurusan = await Model_Jurusan.getAll();
         let ruangan = await Model_Ruangan.getAll();
         let dosen = await Model_Dosen.getAll();
         res.render('users/admin/jadwal/edit', {
-            id: data[0].id_jadwal,
-            hari: data[0].hari,
-            id_kelas: data[0].id_kelas,
-            id_matakuliah: data[0].id_matakuliah,
-            id_jurusan: data[0].id_jurusan,
-            id_ruangan: data[0].id_ruangan,
-            id_dosen: data[0].id_dosen,
-            waktu: data[0].waktu,
+            id: data.id_jadwal,
+            hari: data.hari,
+            id_kelas: data.id_kelas,
+            id_matakuliah: data.id_matakuliah,
+            id_jurusan: data.id_jurusan,
+            id_ruangan: data.id_ruangan,
+            id_dosen: data.id_dosen,
+            waktu: data.waktu,
             kelas,
             matakuliah,
             jurusan,
@@ -87,7 +88,7 @@ routes.post('/update/:id', async (req, res, next) => {
         let { hari, id_kelas, id_matakuliah, id_jurusan, id_ruangan, id_dosen, waktu } = req.body;
         let data = { hari, id_kelas, id_matakuliah, id_jurusan, id_ruangan, id_dosen, waktu };
         await Model_Jadwal.update(id, data);
-        res.redirect('/jadwal');
+        res.redirect('/admin/jadwal');
     } catch (err) {
         console.log(err);
         next(err);
@@ -98,7 +99,7 @@ routes.get('/delete/:id', async (req, res, next) => {
     try {
         let id = req.params.id;
         await Model_Jadwal.delete(id);
-        res.redirect('/jadwal');
+        res.redirect('/admin/jadwal');
     } catch (err) {
         console.log(err);
         next(err);

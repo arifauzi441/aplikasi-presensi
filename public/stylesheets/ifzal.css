@@ -474,7 +474,14 @@
     border: 1px solid black;
     color: #000;
     background-color: #B0DEBC;
-    width: 95%;
+    width: 100%;
+    margin-bottom: 30px;
+
+}.presensi-button .btn-warning{
+    border: 1px solid black;
+    color: #000;
+    background-color: #B0DEBC;
+    width: 100%;
     margin-bottom: 30px;
 
 }

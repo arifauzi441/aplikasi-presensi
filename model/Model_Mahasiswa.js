@@ -1,6 +1,39 @@
 const connection = require('../config/db');
 
 class Model_Mahasiswa {
+    
+    static async getByIdUser(id) {
+        return new Promise((resolve, reject) => {
+            connection.query(`SELECT * FROM mahasiswa m 
+                              JOIN kelas k ON m.id_kelas = k.id_kelas 
+                              JOIN jurusan j ON m.id_jurusan = j.id_jurusan
+                              WHERE m.id_users = ?`, [id], (err, rows) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(rows[0]);
+                }
+            });
+        });
+    }
+
+    static async getMahasiswaByJadwal(id) {
+        return new Promise((resolve, reject) => {
+            connection.query(`SELECT * FROM mahasiswa m 
+                              JOIN kelas k ON m.id_kelas = k.id_kelas 
+                              JOIN jurusan j ON m.id_jurusan = j.id_jurusan
+                              JOIN jadwal ja ON ja.id_jurusan = j.id_jurusan
+                              WHERE m.id_kelas = ja.id_kelas
+                              AND m.id_jurusan = ja.id_jurusan
+                              AND ja.id_jadwal = ?`, [id], (err, rows) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(rows);
+                }
+            });
+        });
+    }
 
     static async getAll() {
         return new Promise((resolve, reject) => {

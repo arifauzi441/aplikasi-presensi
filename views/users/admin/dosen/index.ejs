@@ -11,7 +11,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Data Dosen</h4>
-                                <a href="/dosen/create" class="btn btn-sm btn-success mb-3">Tambah Dosen</a>
+                                <a href="/admin/dosen/create" class="btn btn-sm btn-success mb-3">Tambah Dosen</a>
                                 <div class="table-responsive">
                                     <table class="table table-striped">
                                         <thead>
@@ -33,8 +33,8 @@
                                                 <td><%= data[i].jenis_kelamin %></td>
                                                 <td><%= data[i].email %></td>
                                                 <td>
-                                                    <a href="/dosen/edit/<%= data[i].id_dosen %>" class="btn btn-sm btn-warning">Edit</a>
-                                                    <a href="/dosen/delete/<%= data[i].id_dosen %>" class="btn btn-sm btn-danger">Delete</a>
+                                                    <a href="/admin/dosen/edit/<%= data[i].id_dosen %>" class="btn btn-sm btn-warning">Edit</a>
+                                                    <a href="/admin/dosen/delete/<%= data[i].id_dosen %>" class="btn btn-sm btn-danger">Delete</a>
                                                 </td>
                                             </tr>
                                             <% } %>

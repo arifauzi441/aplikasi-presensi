@@ -305,7 +305,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 200px;
+    gap: 4rem;
 }
 
 .kotak .profil .ktr{
@@ -313,6 +313,12 @@
     justify-content: center;
     flex-direction: column;
     position: relative;
+}
+
+.kotak .profil .ktr .bck-kmps-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .kotak .profil .ktr .bck{
@@ -326,11 +332,20 @@
     margin-bottom: 15px;
 }
 
+
+.kotak .profil .ktr .kmps{
+    color: var(--body-color);
+    font-size: 20px;
+    margin-bottom: 13px;
+}
+
 .kotak .profil .ktr .nme{
     color: var(--body-color);
     font-weight: 700;
     font-size: 40px;
     margin-bottom: 5px;
+    max-width: 700px; 
+    text-overflow: ellipsis;
 }
 
 .kotak .profil .ktr .nrp{

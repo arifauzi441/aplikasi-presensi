@@ -2,6 +2,18 @@ const connection = require('../config/db');
 
 class Model_Dosen {
 
+    static async getByIdUser(id) {
+        return new Promise((resolve, reject) => {
+            connection.query(`SELECT * FROM dosen WHERE id_users = ?`, [id], (err, rows) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(rows[0]);
+                }
+            });
+        });
+    }
+
     static async getAll() {
         return new Promise((resolve, reject) => {
             connection.query(`SELECT d.*, u.email, u.level_users 

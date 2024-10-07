@@ -5,7 +5,7 @@ class Model_Pengumpulan{
         return new Promise((resolve, reject) => {
             db.query(`select * from pengumpulan where id_tugas = ? && id_mahasiswa = ?`, [id_tugas, id_mahasiswa], (err, rows) => {
                 if(err) return reject(err)
-                resolve(rows)        
+                resolve(rows[0])        
             })
         })
     }
@@ -14,7 +14,7 @@ class Model_Pengumpulan{
         return new Promise((resolve, reject) => {
             db.query(`select * from pengumpulan where id_pengumpulan = ?`, [id_pengumpulan], (err, rows) => {
                 if(err) return reject(err)
-                resolve(rows)        
+                resolve(rows[0])        
             })
         })
     }
