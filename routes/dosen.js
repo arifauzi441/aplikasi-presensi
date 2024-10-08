@@ -375,6 +375,8 @@ router.post(`/kuliah/materi/:id/store`, upload.single(`file_materi`), async (req
     try {
         let {judul_materi} = req.body
         let file_materi = `/materi/${req.file.filename}`
+        let jadwalDetail = await Model_Jadwal.getId(id_jadwal)
+        let dosen = await Model_Dosen.getByIdUser(req.session.userId)
 
         if(jadwalDetail.id_dosen !== dosen.id_dosen) return res.redirect(`/login`)
 

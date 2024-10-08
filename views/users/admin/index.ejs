@@ -1,4 +1,108 @@
 <%- include('partials/__head.ejs') %>
     <%- include('partials/__nav.ejs') %>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
 
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Prosto+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #FFFEFA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px;  
+    width: 85%;  
+    max-width: 1400px;  
+    margin: auto;
+    gap: 3rem;  
+}
+
+.gambar img {
+    width: 280px; 
+    height: 400px;  
+    border-radius: 100px 120px 120px 100px;  
+    object-fit: cover;
+    object-position: bottom;
+    box-shadow: -35px 0px 1px #4A4848;  
+}
+
+.side {
+    max-width: 650px;  
+}
+
+.judul span {
+    font-family: "Prosto One", sans-serif;
+    font-size: 3rem;  
+    font-weight: 500;
+    color: #111;
+}
+
+.side .subjudul span {
+    font-family: "Prosto One", sans-serif;
+    display: block;
+    font-size: 2rem;  
+    font-weight: 500;
+    color: #333;
+    margin-top: 5px;
+}
+
+.teks span {
+    display: block;
+    font-size: 1.2rem;  
+    color: #555;
+    margin-top: 35px;
+}
+
+    </style>
+
+</head>
+
+
+<body>
+    
+    <section class="container">
+        <div class="gambar">
+            <img src="../../../images/admin/admin.jpg" alt="image">
+        </div>
+
+        <div class="side">
+            <div class="judul">
+                <span>Selamat Datang </span>
+            </div>
+            <div class="subjudul">
+                <span>di Dashboard Admin Presensi</span>
+            </div>
+
+            <div class="teks">
+                <span>
+                    Halo Admin, selamat datang di sistem manajemen presensi untuk mahasiswa dan dosen. 
+                    Di halaman ini, Anda dapat memantau kehadiran terbaru, mengelola data mahasiswa dan dosen, 
+                    serta memastikan kelancaran kegiatan perkuliahan dengan efisien. Terima kasih atas dedikasi 
+                    Anda dalam memastikan data kehadiran selalu akurat dan up-to-date. Gunakan menu navigasi di sebelah kiri untuk mengelola presensi
+                </span>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
     <%- include('partials/__foot.ejs') %>

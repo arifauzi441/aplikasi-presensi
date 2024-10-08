@@ -42,7 +42,7 @@ routes.get('/create', async (req, res, next) => {
 routes.post('/store', async (req, res, next) => {
     try {
         let { hari, id_kelas, id_matakuliah, id_jurusan, id_ruangan, id_dosen, waktu } = req.body;
-        let data = { hari, id_kelas, id_matakuliah, id_jurusan, id_ruangan, id_dosen, waktu, id_semester:1 };
+        let data = { hari, id_kelas, id_matakuliah, id_jurusan, id_ruangan, id_dosen, waktu};
         await Model_Jadwal.store(data);
         res.redirect('/admin/jadwal');
     } catch (err) {
