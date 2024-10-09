@@ -34,7 +34,7 @@
 
                     <ul class="menu-links">
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="/dosen/beranda">
                                 <i class='bx bx-home icon' ></i>
                                 <span class="text nav-text">Dashboard</span>
                             </a>
@@ -43,7 +43,7 @@
 
                     <ul class="menu-links">
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="/dosen/matakuliah">
                                 <i class='bx bx-book-bookmark icon' ></i>
                                 <span class="text nav-text">Matakuliah</span>
                             </a>
@@ -52,7 +52,7 @@
                     
                     <ul class="menu-links">
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="/dosen/jadwal-online">
                                 <i class='bx bx-book-content icon' ></i>
                                 <span class="text nav-text">Jadwal</span>
                             </a>
@@ -64,7 +64,7 @@
                 <div class="bottom-content">
                     <div class="hr-horizontal"></div>
                     <li class="">
-                        <a href="#">
+                        <a href="/logout">
                             <i class='bx bx-log-out icon' ></i>
                             <span class="text nav-text">Logout</span>
                         </a>
@@ -156,27 +156,15 @@
                         </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>
-                                <a href="file1.pdf" download>Unduh Lampiran 1</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>
-                                <a href="file2.pdf" download>Unduh Lampiran 2</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry the Bird</td>
-                            <td>
-                                <a href="file3.pdf" download>Unduh Lampiran 3</a>
-                            </td>
-                        </tr>
+                            <% for( let i = 0; i < pengumpulan.length; i++ ) { %>
+                                <tr>
+                                    <th scope="row"><%= i + 1 %></th>
+                                    <td><%= pengumpulan[i].nama_mahasiswa %></td>
+                                    <td>
+                                        <a href="<%= pengumpulan[i].file_pengumpulan %>"><%= nama_file_pengumpulan[i] %></a>
+                                    </td>
+                                </tr>
+                            <% } %>
                         </tbody>
                     </table>
             </div>  

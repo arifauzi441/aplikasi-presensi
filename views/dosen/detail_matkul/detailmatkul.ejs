@@ -34,7 +34,7 @@
 
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="/dosen/beranda">
                             <i class='bx bx-home icon' ></i>
                             <span class="text nav-text">Dashboard</span>
                         </a>
@@ -43,7 +43,7 @@
 
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="/dosen/matakuliah">
                             <i class='bx bx-book-bookmark icon' ></i>
                             <span class="text nav-text">Matakuliah</span>
                         </a>
@@ -52,7 +52,7 @@
                 
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="/dosen/jadwal-online">
                             <i class='bx bx-book-content icon' ></i>
                             <span class="text nav-text">Jadwal</span>
                         </a>
@@ -64,7 +64,7 @@
             <div class="bottom-content">
                 <div class="hr-horizontal"></div>
                 <li class="">
-                    <a href="#">
+                    <a href="/logout">
                         <i class='bx bx-log-out icon' ></i>
                         <span class="text nav-text">Logout</span>
                     </a>
@@ -146,11 +146,11 @@
                     </div>
 
                     <div class="wk">
-                        <span>Waktu : 2 Hari yang lalu</span>
+                        <span>Waktu : <%= presensiSekarang?.tanggal || `` %> - <%= presensiSekarang?.waktu_buka || `` %></span>
                     </div>
 
                     <div class="ak">
-                        <a href="/dosen/kuliah/presensi/<%= jadwalDetail.id_jadwal %>">Akses Presensi</a>
+                        <a style="cursor: pointer;" href="/dosen/kuliah/presensi/<%= jadwalDetail.id_jadwal %>">Akses Presensi</a>
                     </div>
                 </div>
             </article>
@@ -167,11 +167,11 @@
                     </div>
                         
                     <div class="ps">
-                        <span>M4 Ukuran Pemusatan & Ukuran Keragaman</span>
+                        <span><%= materiSekarang?.judul_materi || `` %></span>
                     </div>
 
                     <div class="wk">
-                        <span>Diupload pada Selasa, 03 September 2024 - 12:40</span>
+                        <span>Diupload pada <%= materiSekarang?.hari || `` %>, <%= materiSekarang?.tanggal_upload || `` %> - <%= materiSekarang?.waktu_upload || `` %></span>
                     </div>
 
                     <div class="ak">
@@ -192,11 +192,11 @@
                     </div>
                         
                     <div class="ps">
-                        <span>Metode Simpleks untuk Program Linier</span>
+                        <span><%= tugasSekarang?.judul_tugas || ``%></span>
                     </div>
 
                     <div class="wk">
-                        <span>Deadline : Rabu, 18 September 2024 - 23:00</span>
+                        <span>Deadline : <%= tugasSekarang?.hari_deadline || ``%>, <%= tugasSekarang?.tanggal_deadline || ``%> - <%= tugasSekarang?.waktu_deadline || ``%></span>
                     </div>
 
                     <div class="ak">

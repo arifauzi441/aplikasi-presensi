@@ -9,7 +9,8 @@ const Model_Jadwal = require(`../model/Model_Jadwal`);
 const Model_Mahasiswa = require('../model/Model_Mahasiswa');
 const Model_Presensi = require('../model/Model_Presensi');
 const Model_Tugas = require('../model/Model_Tugas');
-const Model_Materi = require(`../model/Model_Materi`)
+const Model_Materi = require(`../model/Model_Materi`);
+const Model_Pengumpulan = require('../model/Model_Pengumpulan');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -68,10 +69,17 @@ router.get(`/kuliah/detail/:id`, async (req, res, next) => {
     
     let jadwalDetail = await Model_Jadwal.getId(id_jadwal)
     let dosen = await Model_Dosen.getByIdUser(req.session.userId)
+    let presensiSekarang = await Model_Presensi.getNowPresensiByJadwal(id_jadwal)
+    let materiSekarang = await Model_Materi.getNowMateriByJadwal(id_jadwal)
+    let tugasSekarang = await Model_Tugas.getNowTugasByJadwal(id_jadwal)
     
     if(jadwalDetail.id_dosen !== dosen.id_dosen) return res.redirect(`/login`)
 
-    res.render(`dosen/detail_matkul/detailmatkul`,{jadwalDetail})
+    if(presensiSekarang) presensiSekarang.tanggal = presensiSekarang.tanggal.toLocaleDateString(`en-CA`)
+    if(materiSekarang) materiSekarang.tanggal_upload = materiSekarang.tanggal_upload.toLocaleDateString(`en-CA`)
+    if(tugasSekarang) tugasSekarang.tanggal_deadline = tugasSekarang.tanggal_deadline.toLocaleDateString(`en-CA`)
+
+    res.render(`dosen/detail_matkul/detailmatkul`,{jadwalDetail, presensiSekarang, materiSekarang, tugasSekarang})
 })
 
 router.get(`/kuliah/presensi/:id`, async (req, res, next) => {
@@ -209,13 +217,22 @@ router.get(`/kuliah/tugas/detail/:id`, async (req, res, next) => {
     let tugasDetail = await Model_Tugas.getTugasById(id_tugas)
     let jadwalDetail = await Model_Jadwal.getId(tugasDetail.id_jadwal)
     let dosen = await Model_Dosen.getByIdUser(req.session.userId)
+    let pengumpulan = await Model_Pengumpulan.getPengumpulanByTugasId(id_tugas)
+
+    let nama_file_pengumpulan = []
+    if(pengumpulan) {
+        let temp = []
+        for(let i = 0; i < pengumpulan.length; i++){
+            [temp[i],nama_file_pengumpulan[i]] = pengumpulan[i].file_pengumpulan.split(` - `)
+        }
+    }
 
     if(jadwalDetail.id_dosen !== dosen.id_dosen) return res.redirect(`/login`)
 
     let [temp, file_name] = tugasDetail.file_tugas.split(` - `)
     tugasDetail.tanggal_deadline = tugasDetail.tanggal_deadline.toLocaleDateString(`en-CA`)
     
-    res.render(`dosen/detail_tugas/detail_tugas` , {tugasDetail, jadwalDetail, file_name})
+    res.render(`dosen/detail_tugas/detail_tugas` , {tugasDetail, jadwalDetail, file_name, pengumpulan, nama_file_pengumpulan})
 })
 
 router.get(`/kuliah/tugas/:id/create`, async (req, res, next) => {
@@ -449,7 +466,7 @@ router.post(`/kuliah/materi/:id/update`, upload.single(`file_materi`), async (re
         res.redirect(`/dosen/kuliah/materi/${materiDetail.id_jadwal}`)
     } catch (error) {
         console.log(error)
-        res.redirect(`/dosen/kuliah/materi/${materiDetail.id_jadwal}`)
+        res.redirect(`/dosen/kuliah/materi/${id_materi}`)
     }
 })
 
@@ -470,7 +487,7 @@ router.get(`/kuliah/materi/:id/delete`, async (req, res, next) => {
         res.redirect(`/dosen/kuliah/materi/${id_jadwal}`)
     } catch (error) {
         console.log(error)
-        res.redirect(`/dosen/kuliah/materi/${id_jadwal}`)
+        res.redirect(`/dosen/kuliah/materi/${id_materi}`)
     }
 })
 

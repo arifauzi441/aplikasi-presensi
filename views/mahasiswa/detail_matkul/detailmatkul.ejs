@@ -147,7 +147,7 @@
                     </div>
 
                     <div class="wk">
-                        <span>Waktu : 2 Hari yang lalu</span>
+                        <span>Waktu : <%= presensiSekarang?.tanggal || `` %> - <%= presensiSekarang?.waktu_buka || `` %></span>
                     </div>
 
                     <div class="ak">
@@ -168,11 +168,11 @@
                     </div>
                         
                     <div class="ps">
-                        <span>M4 Ukuran Pemusatan & Ukuran Keragaman</span>
+                        <span><%= materiSekarang?.judul_materi || `` %></span>
                     </div>
 
                     <div class="wk">
-                        <span>Diupload pada Selasa, 03 September 2024 - 12:40</span>
+                        <span>Diupload pada <%= materiSekarang?.hari || `` %>, <%= materiSekarang?.tanggal_upload || `` %> - <%= materiSekarang?.waktu_upload || `` %></span>
                     </div>
 
                     <div class="ak">
@@ -193,11 +193,11 @@
                     </div>
                         
                     <div class="ps">
-                        <span>Metode Simpleks untuk Program Linier</span>
+                        <span><%= tugasSekarang?.judul_tugas || ``%></span>
                     </div>
 
                     <div class="wk">
-                        <span>Deadline : Rabu, 18 September 2024 - 23:00</span>
+                        <span>Deadline : <%= tugasSekarang?.hari_deadline || ``%>, <%= tugasSekarang?.tanggal_deadline || ``%> - <%= tugasSekarang?.waktu_deadline || ``%></span>
                     </div>
 
                     <div class="ak">

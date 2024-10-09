@@ -64,11 +64,18 @@ router.get(`/kuliah/detail/:id`, async (req, res, next) => {
     let id_jadwal = req.params.id
     let jadwalDetail = await Model_Jadwal.getId(id_jadwal)
     let jadwalMahasiswa = await Model_Mahasiswa.getByIdUser(req.session.userId)
-
+    let presensiSekarang = await Model_Presensi.getNowPresensiByJadwal(id_jadwal)
+    let materiSekarang = await Model_Materi.getNowMateriByJadwal(id_jadwal)
+    let tugasSekarang = await Model_Tugas.getNowTugasByJadwal(id_jadwal)
+    
     if(jadwalDetail.id_jurusan !== jadwalMahasiswa.id_jurusan && jadwalDetail.id_kelas !== jadwalMahasiswa.id_kelas) return res.redirect(`/login`)
         
-        res.render(`mahasiswa/detail_matkul/detailmatkul`,{jadwalDetail})
-    })
+    if(presensiSekarang) presensiSekarang.tanggal = presensiSekarang.tanggal.toLocaleDateString(`en-CA`)
+    if(materiSekarang) materiSekarang.tanggal_upload = materiSekarang.tanggal_upload.toLocaleDateString(`en-CA`)
+    if(tugasSekarang) tugasSekarang.tanggal_deadline = tugasSekarang.tanggal_deadline.toLocaleDateString(`en-CA`)
+    
+    res.render(`mahasiswa/detail_matkul/detailmatkul`,{jadwalDetail, presensiSekarang, tugasSekarang, materiSekarang})
+})
     
 router.get(`/kuliah/presensi/:id`, async (req, res, next) => {
     let id_jadwal = req.params.id
@@ -166,15 +173,21 @@ router.get(`/kuliah/tugas/:id`, async (req, res, next) => {
     let data_tugas = await Model_Tugas.getTugasByJadwal(id_jadwal)
     let jadwalDetail = await Model_Jadwal.getId(id_jadwal)
     let jadwalMahasiswa = await Model_Mahasiswa.getByIdUser(req.session.userId)
+    let data_pengumpulan = await Model_Pengumpulan.getAllPengumpulanByJadwal(id_jadwal, jadwalMahasiswa.id_mahasiswa)
     
     if(jadwalDetail.id_jurusan !== jadwalMahasiswa.id_jurusan && jadwalDetail.id_kelas !== jadwalMahasiswa.id_kelas) return res.redirect(`/login`)
         
-        data_tugas.forEach(data_tugas => {
-            data_tugas.tanggal_deadline = data_tugas.tanggal_deadline.toLocaleDateString(`en-CA`)
-        })
-        
-        res.render(`mahasiswa/tugas_user/tugas_user`, {data_tugas, jadwalDetail})
+    data_tugas.forEach(data_tugas => {
+        data_tugas.tanggal_deadline = data_tugas.tanggal_deadline.toLocaleDateString(`en-CA`)
     })
+    if(data_pengumpulan.length >= 0) {
+        data_pengumpulan.forEach(dp => {
+            dp.tanggal_pengumpulan = dp.tanggal_pengumpulan.toLocaleDateString(`en-CA`)
+        })
+    }
+
+    res.render(`mahasiswa/tugas_user/tugas_user`, {data_tugas, jadwalDetail, data_pengumpulan})
+})
     
 router.get(`/kuliah/tugas/detail/:id`, async (req, res, next) => {
     let id_tugas = req.params.id
@@ -183,8 +196,6 @@ router.get(`/kuliah/tugas/detail/:id`, async (req, res, next) => {
     let jadwalDetail = await Model_Jadwal.getId(tugasDetail.id_jadwal)
     let pengumpulan = await Model_Pengumpulan.getPengumpulanByTugas(id_tugas, mahasiswa.id_mahasiswa)
     let jadwalMahasiswa = await Model_Mahasiswa.getByIdUser(req.session.userId)
-
-    console.log(pengumpulan)
     
     if(jadwalDetail.id_jurusan !== jadwalMahasiswa.id_jurusan && jadwalDetail.id_kelas !== jadwalMahasiswa.id_kelas) return res.redirect(`/login`)
     
