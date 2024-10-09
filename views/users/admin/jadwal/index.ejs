@@ -11,7 +11,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Data Jadwal</h4>
-                                <a href="/jadwal/create" class="btn btn-sm btn-success mb-3">Tambah Jadwal</a>
+                                <a href="/admin/jadwal/create" class="btn btn-sm btn-success mb-3">Tambah Jadwal</a>
                                 <div class="table-responsive">
                                     <table class="table table-striped">
                                         <thead>
@@ -39,8 +39,8 @@
                                                 <td><%= data[i].nama_dosen %></td>
                                                 <td><%= data[i].waktu %></td>
                                                 <td>
-                                                    <a href="/jadwal/edit/<%= data[i].id_jadwal %>" class="btn btn-sm btn-warning">Edit</a>
-                                                    <a href="/jadwal/delete/<%= data[i].id_jadwal %>" class="btn btn-sm btn-danger">Delete</a>
+                                                    <a href="/admin/jadwal/edit/<%= data[i].id_jadwal %>" class="btn btn-sm btn-warning">Edit</a>
+                                                    <a href="/admin/jadwal/delete/<%= data[i].id_jadwal %>" class="btn btn-sm btn-danger">Delete</a>
                                                 </td>
                                             </tr>
                                             <% } %>

@@ -1,7 +1,7 @@
 db = require(`../config/db`)
 
 class Model_Materi{
-    static getmateriByJadwal(id_jadwal) {
+    static getMateriByJadwal(id_jadwal) {
         return new Promise((resolve, reject) => {
             db.query(`select * from materi where id_jadwal = ?`, [id_jadwal], (err, rows) => {
                 if(err) return reject(err)
@@ -10,16 +10,16 @@ class Model_Materi{
         })
     }
 
-    static getmateriById(id_materi) {
+    static getMateriById(id_materi) {
         return new Promise((resolve, reject) => {
             db.query(`select * from materi where id_materi = ?`, [id_materi], (err, rows) => {
                 if(err) return reject(err)
-                resolve(rows)        
+                resolve(rows[0])        
             })
         })
     }
 
-    static addmateri(data) {
+    static addMateri(data) {
         return new Promise((resolve, reject) => {
             db.query(`insert into materi set ? `, data, (err, rows) => {
                 if(err) return reject(err)
@@ -28,7 +28,7 @@ class Model_Materi{
         })
     }    
 
-    static updatemateri(id_materi, data) {
+    static updateMateri(id_materi, data) {
         return new Promise((resolve, reject) => {
             db.query(`update materi set ? where id_materi = ? `, [data, id_materi], (err, rows) => {
                 if(err) return reject(err)
@@ -37,7 +37,7 @@ class Model_Materi{
         })
     }    
 
-    static deletemateri(id_materi) {
+    static deleteMateri(id_materi) {
         return new Promise((resolve, reject) => {
             db.query(`delete from materi where id_materi = ? `, [id_materi], (err, rows) => {
                 if(err) return reject(err)

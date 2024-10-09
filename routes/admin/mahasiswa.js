@@ -38,7 +38,7 @@ routes.post('/store', async (req, res, next) => {
         let { nama_mahasiswa, nrp, jenis_kelamin, id_kelas, id_jurusan, id_users } = req.body;
         let data = { nama_mahasiswa, nrp, jenis_kelamin, id_kelas, id_jurusan, id_users };
         await Model_Mahasiswa.store(data);
-        res.redirect('/mahasiswa');
+        res.redirect('/admin/mahasiswa');
     } catch (err) {
         console.log(err);
         next(err);
@@ -76,7 +76,7 @@ routes.post('/update/:id', async (req, res, next) => {
         let { nama_mahasiswa, nrp, jenis_kelamin, id_kelas, id_jurusan, id_users } = req.body;
         let data = { nama_mahasiswa, nrp, jenis_kelamin, id_kelas, id_jurusan, id_users };
         await Model_Mahasiswa.update(id, data);
-        res.redirect('/mahasiswa');
+        res.redirect('/admin/mahasiswa');
     } catch (err) {
         console.log(err);
         next(err);
@@ -87,7 +87,7 @@ routes.get('/delete/:id', async (req, res, next) => {
     try {
         let id = req.params.id;
         await Model_Mahasiswa.delete(id);
-        res.redirect('/mahasiswa');
+        res.redirect('/admin/mahasiswa');
     } catch (err) {
         console.log(err);
         next(err);

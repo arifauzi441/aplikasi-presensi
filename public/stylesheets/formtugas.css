@@ -427,6 +427,7 @@
 .crt1 .container .form-article .form-dosen .input-box input[type="date"],
 .crt1 .container .form-article .form-dosen .input-box input[type="text"],
 .crt1 .container .form-article .form-dosen .input-box input[type="file"],
+.crt1 .container .form-article .form-dosen .input-box input[type="number"],
 .crt1 .container .form-article .form-dosen textarea {
     width: 100%;
     padding: 10px;

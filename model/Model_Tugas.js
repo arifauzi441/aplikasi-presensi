@@ -14,7 +14,7 @@ class Model_Tugas{
         return new Promise((resolve, reject) => {
             db.query(`select * from tugas where id_tugas = ?`, [id_tugas], (err, rows) => {
                 if(err) return reject(err)
-                resolve(rows)        
+                resolve(rows[0])        
             })
         })
     }

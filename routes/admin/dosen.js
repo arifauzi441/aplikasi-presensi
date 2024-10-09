@@ -32,7 +32,7 @@ routes.post('/store', async (req, res, next) => {
         let { nama_dosen, nip, jenis_kelamin, id_users } = req.body;
         let data = { nama_dosen, nip, jenis_kelamin, id_users };
         await Model_Dosen.store(data);
-        res.redirect('/dosen');
+        res.redirect('/admin/dosen');
     } catch (err) {
         console.log(err);
         next(err);
@@ -64,7 +64,7 @@ routes.post('/update/:id', async (req, res, next) => {
         let { nama_dosen, nip, jenis_kelamin, id_users } = req.body;
         let data = { nama_dosen, nip, jenis_kelamin, id_users };
         await Model_Dosen.update(id, data);
-        res.redirect('/dosen');
+        res.redirect('/admin/dosen');
     } catch (err) {
         console.log(err);
         next(err);
@@ -75,7 +75,7 @@ routes.get('/delete/:id', async (req, res, next) => {
     try {
         let id = req.params.id;
         await Model_Dosen.delete(id);
-        res.redirect('/dosen');
+        res.redirect('/admin/dosen');
     } catch (err) {
         console.log(err);
         next(err);

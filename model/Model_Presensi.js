@@ -12,7 +12,7 @@ class Model_Presensi{
 
     static getNowPresensiByJadwal(id){
         return new Promise((resolve, reject) => {
-            db.query(`select * from presensi order by id_presensi desc where id_jadwal = ?`, [id], (err, rows) => {
+            db.query(`select * from presensi where id_jadwal = ? order by id_presensi desc`, [id], (err, rows) => {
                 if(err) return reject(err)
                 resolve(rows[0])
             })
@@ -24,13 +24,23 @@ class Model_Presensi{
             db.query(`insert into presensi set ?`, data, (err, rows) => {
                 if(err) return reject(err)
                 resolve(rows)
+                console.log(data.hari)
             })
         })
     }
     
-    static updateStatusPresensi(status){
+    static getById(id_presensi){
         return new Promise((resolve, reject) => {
-            db.query(`update presensi set status = ? where id_presensi = ?`, [status,id], (err, rows) => {
+            db.query(`select * from presensi where id_presensi = ?`, [id_presensi], (err, rows) => {
+                if(err) return reject(err)
+                resolve(rows[0])
+            })
+        })
+    }
+    
+    static updateStatusPresensi(status,id){
+        return new Promise((resolve, reject) => {
+            db.query(`update presensi set status_presensi = ? where id_presensi = ?`, [status,id], (err, rows) => {
                 if(err) return reject(err)
                 resolve(rows)
             })
@@ -39,9 +49,9 @@ class Model_Presensi{
 
     static getIdPresensi(id){
         return new Promise((resolve, reject) => {
-            db.query(`select id_presensi from presensi order by id_presensi desc where id_jadwal = ?`, [id], (err, rows) => {
+            db.query(`select id_presensi from presensi where id_jadwal = ? order by id_presensi desc`, [id], (err, rows) => {
                 if(err) return reject(err)
-                resolve(rows[0])
+                resolve(rows[0].id_presensi)
             })
         })
     }

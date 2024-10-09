@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+    <link rel="stylesheet" href="/stylesheets/landing.css">
+    <title>Landing Page</title>
+</head>
+<body>
+    <!-- SIDEBAR -->
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="/images/Logo_PENS.png" alt="logo">
+                </span>
+
+                <div class="text header-text">
+                    <span class="name">SiKAP</span>
+                    <span class="profession">Presensi Terpadu</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="search-box">
+                        <i class='bx bx-search icon'></i>
+                        <input type="search" placeholder="Search...">
+                </li>
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="/mahasiswa/beranda">
+                            <i class='bx bx-home icon' ></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="/mahasiswa/matakuliah">
+                            <i class='bx bx-book-bookmark icon' ></i>
+                            <span class="text nav-text">Matakuliah</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <ul class="menu-links">
+                    <li class="/mahasiswa/jadwal-online">
+                        <a href="/mahasiswa/jadwal-online">
+                            <i class='bx bx-book-content icon' ></i>
+                            <span class="text nav-text">Jadwal</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="bottom-content">
+                <div class="hr-horizontal"></div>
+                <li class="">
+                    <a href="/logout">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+            </div>
+
+        </div>
+    </nav>
+
+
+<!-- NAVBAR -->
+    <section class="nav-bar">
+
+        <div class="bar">
+        
+            <section class="head-bar">
+                <div class="image-logo">
+
+                    <div class="texts header-texts">
+                        <span class="names">SiKAP</span>
+                        <span class="professions">Sistem Kehadiran Perkuliahan</span>
+                    </div>
+
+                    <span class="logo"></span>
+                        <img src="/images/logo_sikap.png" alt="logo">
+                    </span>
+
+                </div>
+            </section>
+            
+        </div>
+            
+    </section>
+
+
+<!-- dari sini bagian body atau isi -->
+
+<!--BAGIAN PROFIL SISWA-->
+    <section class="crt">
+        
+        <div class="kotak">
+
+            <div class="profil">
+
+                <div class="ktr">
+                    <div class="bck-kmps-wrapper">
+                        <span class="bck"><%= mahasiswa.nama_jurusan %></span>
+                    </div>                    
+                    <span class="nme"><%= mahasiswa.nama_mahasiswa %></span>
+                    <span class="nrp"><%= mahasiswa.nrp %></span>
+                </div>
+
+                <div class="gmbr">
+                    <img src="/images/laki.png" alt="profils">
+                </div>
+
+            </div>
+        
+        </div>
+
+    </section>
+
+    
+<!--BAGIAN MATKUL SCROLL-->
+    <section class="crt1">
+
+        <div class="kotak2">
+
+            <div class="profg">
+                <i class='bx bx-book-open'></i>
+                <span class="kata">MATA KULIAH</span>
+            </div>
+
+            <div class="boxi">
+
+                <div class="horizontal-scroll">
+                    <div class="contain">
+                        <% for( let i = 0; i < jadwal.length; i++ ) { %>
+                            <div class="ktk1">
+                                <span class="mt"><%= jadwal[i].nama_matakuliah %></span>
+    
+                                <div class="nd">
+                                    <span><%= jadwal[i].nama_dosen %></span>
+                                </div>
+                                
+                                <div class="wk">
+                                    <span><%= jadwal[i].hari %> (<%= jadwal[i].waktu %>)</span>
+                                </div>
+    
+                                <div class="ak">
+                                    <a href="/mahasiswa/kuliah/detail/<%= jadwal[i].id_jadwal %>">Akses Kuliah</a>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+                
+            </div>
+    
+        </div>
+
+    </section>
+
+
+    <script src="/javascripts/landing.js"></script>
+</body>
+</html>

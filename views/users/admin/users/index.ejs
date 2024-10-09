@@ -11,7 +11,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Data Users</h4>
-                                <a href="/user/create" class="btn btn-sm btn-success mb-3">Tambah User</a>
+                                <a href="/admin/user/create" class="btn btn-sm btn-success mb-3">Tambah User</a>
                                 <div class="table-responsive">
                                     <table class="table table-striped">
                                         <thead>
@@ -29,8 +29,8 @@
                                                 <td><%= data[i].email %></td>
                                                 <td><%= data[i].level_users %></td>
                                                 <td>
-                                                    <a href="/users/edit/<%= data[i].id_users %>" class="btn btn-sm btn-warning">Edit</a>
-                                                    <a href="/users/delete/<%= data[i].id_users %>" class="btn btn-sm btn-danger">Delete</a>
+                                                    <a href="/admin/user/edit/<%= data[i].id_users %>" class="btn btn-sm btn-warning">Edit</a>
+                                                    <a href="/admin/user/delete/<%= data[i].id_users %>" class="btn btn-sm btn-danger">Delete</a>
                                                 </td>
                                             </tr>
                                             <% } %>

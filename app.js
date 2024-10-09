@@ -8,14 +8,16 @@ var flash = require(`express-flash`);
 
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
-var jurusanRouter = require('./routes/admin/jurusan');
-var kelasRouter = require('./routes/admin/kelas');
-var matakuliahRouter = require('./routes/admin/matakuliah');
-var ruanganRouter = require('./routes/admin/ruangan');
-var jadwalRouter = require('./routes/admin/jadwal');
-var userRouter = require('./routes/admin/user');
-var mahasiswaRouter = require('./routes/admin/mahasiswa');
-var dosenRouter = require('./routes/admin/dosen');
+var adminjurusanRouter = require('./routes/admin/jurusan');
+var adminkelasRouter = require('./routes/admin/kelas');
+var adminmatakuliahRouter = require('./routes/admin/matakuliah');
+var adminruanganRouter = require('./routes/admin/ruangan');
+var adminjadwalRouter = require('./routes/admin/jadwal');
+var adminuserRouter = require('./routes/admin/user');
+var adminmahasiswaRouter = require('./routes/admin/mahasiswa');
+var admindosenRouter = require('./routes/admin/dosen');
+var mahasiswaRouter = require(`./routes/mahasiswa`)
+var dosenRouter = require(`./routes/dosen`)
 
 var app = express();
 
@@ -41,12 +43,14 @@ app.use(flash());
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
-app.use('/jurusan', jurusanRouter);
-app.use('/kelas', kelasRouter);
-app.use('/matakuliah', matakuliahRouter);
-app.use('/ruangan', ruanganRouter);
-app.use('/jadwal', jadwalRouter);
-app.use('/user', userRouter);
+app.use('/admin/jurusan', adminjurusanRouter);
+app.use('/admin/kelas', adminkelasRouter);
+app.use('/admin/matakuliah', adminmatakuliahRouter);
+app.use('/admin/ruangan', adminruanganRouter);
+app.use('/admin/jadwal', adminjadwalRouter);
+app.use('/admin/user', adminuserRouter);
+app.use('/admin/mahasiswa', adminmahasiswaRouter);
+app.use('/admin/dosen', admindosenRouter);
 app.use('/mahasiswa', mahasiswaRouter);
 app.use('/dosen', dosenRouter);
 

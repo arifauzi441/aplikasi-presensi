@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Detail Tugas</title>
+        <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+        <link rel="stylesheet" href="/stylesheets/detailtugas.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav class="sidebar close">
+            <header>
+                <div class="image-text">
+                    <span class="image">
+                        <img src="/Images/logo_PENS.png" alt="logo">
+                    </span>
+
+                    <div class="text header-text">
+                        <span class="name">SiKAP</span>
+                        <span class="profession">Presensi Terpadu</span>
+                    </div>
+                </div>
+
+                <i class='bx bx-chevron-right toggle'></i>
+            </header>
+
+            <div class="menu-bar">
+                <div class="menu">
+                    <li class="search-box">
+                            <i class='bx bx-search icon'></i>
+                            <input type="search" placeholder="Search...">
+                    </li>
+
+                    <ul class="menu-links">
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-home icon' ></i>
+                                <span class="text nav-text">Dashboard</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="menu-links">
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-book-bookmark icon' ></i>
+                                <span class="text nav-text">Matakuliah</span>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <ul class="menu-links">
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-book-content icon' ></i>
+                                <span class="text nav-text">Jadwal</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="bottom-content">
+                    <div class="hr-horizontal"></div>
+                    <li class="">
+                        <a href="#">
+                            <i class='bx bx-log-out icon' ></i>
+                            <span class="text nav-text">Logout</span>
+                        </a>
+                    </li>
+                </div>
+
+            </div>
+        </nav>
+
+    <!-- NAVBAR -->
+        <section class="nav-bar">
+
+            <div class="bar">      
+                <section class="head-bar">
+                    <div class="image-logo">
+
+                        <div class="texts header-texts">
+                            <span class="names">SiKAP</span>
+                            <span class="professions">Sistem Kehadiran Perkuliahan</span>
+                        </div>
+
+                        <span class="logo"></span>
+                            <img src="/Images/logo_sikap.png" alt="logo">
+                        </span>
+
+                    </div>
+                </section>     
+            </div>
+        </section> 
+
+        <section class="crt">
+        
+            <div class="kotak">
+        
+                <div class="profil">
+        
+                    <div class="gmbr">
+                        <span>BDL</span>
+                    </div>
+        
+                    <div class="ktr">
+                        <span class="bck"><%= jadwalDetail.nama_jurusan %> Kelas <%= jadwalDetail.nama_kelas %></span>
+                        <span class="nme"><%= jadwalDetail.nama_matakuliah %></span>
+                        <span class="nrp"><%= jadwalDetail.nama_dosen %></span>
+                    </div>
+        
+                </div>
+            
+            </div>
+        </section>
+
+        <div class="crt1">
+            <div class="container-tugas ">
+                
+                    <div class="card detail-tugas" style="width: 830px;">
+                        <div class="card-body detail-tugas">
+                            <div class="title-header">
+                                <h4 class="card-title"><%= tugasDetail.judul_tugas %></h4> <!-- Ganti penutupan tag dari <h5> menjadi <h4> -->
+                            </div>
+                            <div class="info-container">
+                                <h5>Deskripsi :</h5>
+                                <div class="container-deskripsi">
+                                    <p class="deskripsi">
+                                        <%= tugasDetail.deskripsi %>
+                                    </p>
+                                </div>
+                                <h5>Batas Waktu :</h5>
+                                <div class="container-deskripsi">
+                                    <p class="deskripsi">
+                                        <%= tugasDetail.hari_deadline %>, <%= tugasDetail.tanggal_deadline %> - <%= tugasDetail.waktu_deadline %>
+                                    </p>
+                                </div>
+                                <h5>Lampiran :</h5>
+                                <div class="container-deskripsi">
+                                    <div class="file">
+                                        <a href="<%= tugasDetail.file_tugas %>" class="file-text"><%= file_name %></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">NRP</th>
+                            <th scope="col">Catatan</th>
+                            <th scope="col">Lampiran</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>
+                                <a href="file1.pdf" download>Unduh Lampiran 1</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>
+                                <a href="file2.pdf" download>Unduh Lampiran 2</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry the Bird</td>
+                            <td>
+                                <a href="file3.pdf" download>Unduh Lampiran 3</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+            </div>  
+        </div>   
+        
+        <script src="/javascripts/landing.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
+</html>

@@ -11,7 +11,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Data Mahasiswa</h4>
-                                <a href="/mahasiswa/create" class="btn btn-sm btn-success mb-3">Tambah Mahasiswa</a>
+                                <a href="/admin/mahasiswa/create" class="btn btn-sm btn-success mb-3">Tambah Mahasiswa</a>
                                 <div class="table-responsive">
                                     <table class="table table-striped">
                                         <thead>
@@ -37,8 +37,8 @@
                                                 <td><%= data[i].nama_jurusan %></td>
                                                 <td><%= data[i].email %></td>
                                                 <td>
-                                                    <a href="/mahasiswa/edit/<%= data[i].id_mahasiswa %>" class="btn btn-sm btn-warning">Edit</a>
-                                                    <a href="/mahasiswa/delete/<%= data[i].id_mahasiswa %>" class="btn btn-sm btn-danger">Delete</a>
+                                                    <a href="/admin/mahasiswa/edit/<%= data[i].id_mahasiswa %>" class="btn btn-sm btn-warning">Edit</a>
+                                                    <a href="/admin/mahasiswa/delete/<%= data[i].id_mahasiswa %>" class="btn btn-sm btn-danger">Delete</a>
                                                 </td>
                                             </tr>
                                             <% } %>

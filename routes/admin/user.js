@@ -22,8 +22,8 @@ routes.post('/store', async (req, res, next) => {
     try {
         let { email, password, level_users } = req.body;
         let data = { email, password, level_users };
-        await Model_Users.store(data);
-        res.redirect('/user');
+        await Model_Users.storeData(data);
+        res.redirect('/admin/user');
     } catch (err) {
         console.log(err);
         next(err);
@@ -51,8 +51,8 @@ routes.post('/update/:id', async (req, res, next) => {
         let id = req.params.id;
         let { email, password, level_users } = req.body;
         let data = { email, password, level_users };
-        await Model_Users.update(id, data);
-        res.redirect('/user');
+        await Model_Users.updateData(id, data);
+        res.redirect('/admin/user');
     } catch (err) {
         console.log(err);
         next(err);
@@ -62,8 +62,8 @@ routes.post('/update/:id', async (req, res, next) => {
 routes.get('/delete/:id', async (req, res, next) => {
     try {
         let id = req.params.id;
-        await Model_Users.delete(id);
-        res.redirect('/user');
+        await Model_Users.deleteData(id);
+        res.redirect('/admin/user');
     } catch (err) {
         console.log(err);
         next(err);

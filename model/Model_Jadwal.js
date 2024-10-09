@@ -2,6 +2,45 @@ const connection = require('../config/db');
 
 class Model_Jadwal {
 
+    static async getJadwalByMahasiswa(id) {
+        return new Promise((resolve, reject) => {
+            connection.query(`SELECT * 
+                              FROM jadwal j 
+                              JOIN kelas k ON j.id_kelas = k.id_kelas
+                              JOIN mahasiswa ma ON ma.id_kelas = k.id_kelas 
+                              JOIN matakuliah m ON j.id_matakuliah = m.id_matakuliah 
+                              JOIN ruangan r ON j.id_ruangan = r.id_ruangan 
+                              JOIN dosen d ON j.id_dosen = d.id_dosen 
+                              JOIN jurusan jur ON j.id_jurusan = jur.id_jurusan 
+                              WHERE ma.id_users = ?`, [id], (err, rows) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(rows);
+                }
+            });
+        });
+    }
+
+    static async getJadwalByDosen(id) {
+        return new Promise((resolve, reject) => {
+            connection.query(`SELECT * 
+                              FROM jadwal j 
+                              JOIN kelas k ON j.id_kelas = k.id_kelas
+                              JOIN matakuliah m ON j.id_matakuliah = m.id_matakuliah 
+                              JOIN ruangan r ON j.id_ruangan = r.id_ruangan 
+                              JOIN dosen d ON j.id_dosen = d.id_dosen 
+                              JOIN jurusan jur ON j.id_jurusan = jur.id_jurusan 
+                              WHERE d.id_users = ?`, [id], (err, rows) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(rows);
+                }
+            });
+        });
+    }
+
     static async getAll() {
         return new Promise((resolve, reject) => {
             connection.query(`SELECT j.*, k.nama_kelas, m.nama_matakuliah, r.nama_ruangan, d.nama_dosen, jur.nama_jurusan 
@@ -37,10 +76,10 @@ class Model_Jadwal {
 
     static async getId(id) {
         return new Promise((resolve, reject) => {
-            connection.query(`SELECT j.*, k.nama_kelas, m.nama_matakuliah, r.nama_ruangan, d.nama_dosen, jur.nama_jurusan 
+            connection.query(`SELECT * 
                               FROM jadwal j 
                               JOIN kelas k ON j.id_kelas = k.id_kelas 
-                              JOIN matakuliah m ON j.id_matakuliah = m.id_matakuliah 
+                              JOIN matakuliah m ON j.id_matakuliah = m.id_matakuliah
                               JOIN ruangan r ON j.id_ruangan = r.id_ruangan 
                               JOIN dosen d ON j.id_dosen = d.id_dosen 
                               JOIN jurusan jur ON j.id_jurusan = jur.id_jurusan 
@@ -48,8 +87,7 @@ class Model_Jadwal {
                 if (err) {
                     reject(err);
                 } else {
-                    resolve(rows);
-                    console.log(rows);
+                    resolve(rows[0]);
                 }
             });
         });

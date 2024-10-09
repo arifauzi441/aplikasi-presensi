@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+    <link rel="stylesheet" href="/stylesheets/formtugas.css">
+    <title>Form Tugas</title>
+</head>
+<body>
+    <!-- SIDEBAR -->
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="/images/Logo_PENS.png" alt="logo">
+                </span>
+
+                <div class="text header-text">
+                    <span class="name">SiKAP</span>
+                    <span class="profession">Presensi Terpadu</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="search-box">
+                        <i class='bx bx-search icon'></i>
+                        <input type="search" placeholder="Search...">
+                </li>
+                
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="/dosen/beranda">
+                            <i class='bx bx-home icon' ></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="/dosen/matakuliah">
+                            <i class='bx bx-book-bookmark icon' ></i>
+                            <span class="text nav-text">Matakuliah</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="/dosen/jadwal-online">
+                            <i class='bx bx-book-content icon' ></i>
+                            <span class="text nav-text">Jadwal</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <div class="bottom-content">
+                <div class="hr-horizontal"></div>
+                <li class="">
+                    <a href="/logout">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+
+        </div>
+    </nav>
+
+
+<!-- NAVBAR -->
+    <section class="nav-bar">
+
+        <div class="bar">
+        
+            <section class="head-bar">
+                <div class="image-logo">
+
+                    <div class="texts header-texts">
+                        <span class="names">SiKAP</span>
+                        <span class="professions">Sistem Kehadiran Perkuliahan</span>
+                    </div>
+
+                    <span class="logo"></span>
+                        <img src="/images/logo_sikap.png" alt="logo">
+                    </span>
+
+                </div>
+            </section>
+            
+        </div>
+            
+    </section>
+
+<!-- dari sini bagian body atau isi -->
+
+<!--BAGIAN DETAIL MATKUL-->
+<section class="crt">
+        
+    <div class="kotak">
+
+        <div class="profil">
+
+            <div class="gmbr">
+                <span>BDL</span>
+            </div>
+
+            <div class="ktr">
+                <span class="bck"><%= jadwalDetail.nama_jurusan %> Kelas <%= jadwalDetail.nama_kelas %></span>
+                <span class="nme"><%= jadwalDetail.nama_matakuliah %></span>
+                <span class="nrp"><%= jadwalDetail.nama_dosen %></span>
+            </div>
+
+        </div>
+    
+    </div>
+</section>
+
+<!--BAGIAN DETAIL TUGAS-->
+<section class="crt1"> 
+    <div class="container">
+        <article class="form-article">
+            <form class="form-dosen" action="/dosen/kuliah/tugas/<%= tugasDetail.id_tugas %>/update" method="post" enctype="multipart/form-data">
+                <div class="up">
+                    <span>BUAT TUGAS BARU</span>
+                </div>
+
+                <div class="hr-horizontal"></div>
+
+                <div class="bks-awal">
+                    <div class="input-box">
+                        <input type="text" placeholder="Judul" name="judul_tugas" value="<%= tugasDetail.judul_tugas %>">
+                    </div>
+    
+                    <!-- Kotak preview untuk upload dan preview -->
+                    <div class="preview-box">
+                        <!-- Ikon untuk upload file -->
+                        <label for="fileInput" class="icon-box">
+                            <i class='bx bx-link-alt'></i> Lampiran
+                        </label>
+                        <input type="file" id="fileInput" style="display: none;" name="file_tugas" onchange="previewFile(event)">
+
+                        <!-- Preview untuk file -->
+                        <div class="file-preview">
+                            <img id="imagePreview" src="" alt="Image Preview" style="display: none;">
+                            <embed id="pdfPreview" src="" type="application/pdf" style="display: none;">
+                            <video id="videoPreview" controls style="display: none;">
+                                <source id="videoSource" src="" type="">
+                            </video>
+                            <!-- Tempat untuk menampilkan nama file -->
+                            <p id="fileName" style="display: none;"></p>
+                            <a id="pptPreview" href="#" target="_blank" style="display: none;">Download PPT</a>
+                            <a id="wordPreview" href="#" target="_blank" style="display: none;">Download Word</a>
+                        </div>                    
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <input type="date" placeholder="Deadline" name="tanggal_deadline">
+                </div>
+
+                <div class="bks-tengah">
+    
+                    <div class="input-box">
+                        <input type="number" placeholder="Jam" min="0" max="23" name="jam">
+                    </div>
+    
+                    <div class="input-box">
+                        <input type="number" placeholder="Menit" min="0" max="59" name="menit">
+                    </div>
+                </div>
+
+                <div class="desc">
+                    <textarea name="deskripsi" id="Deskripsi" placeholder="Deskripsi"><%= tugasDetail.deskripsi %></textarea>
+                </div>
+
+                <div class="button-container">
+                    <button class="button-74" role="button" type="submit">Upload</button>
+                </div>
+            </form>
+        </article>
+    </div>
+</section>
+
+
+<script src="/javascripts/ftugas.js"></script>
+</body>
+</html>
