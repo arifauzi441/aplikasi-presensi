@@ -126,7 +126,7 @@
                             <h5 class="card-title"><%= data_tugas[i].judul_tugas %> </h5>
                             <p class="card-text"><%= data_tugas[i].deskripsi %></p>
                             <p><span class="label">Deadline</span> : <%= data_tugas[i].hari_deadline %>, <%= data_tugas[i].tanggal_deadline %> - <%= data_tugas[i].waktu_deadline %></p>
-                            <p><span class="label">Mengumpulkan</span> : Rabu, 18 September 2024 - 23:00</p>
+                            <p><span class="label">Mengumpulkan</span> : <%= data_pengumpulan[i]?.hari_pengumpulan || `` %>, <%= data_pengumpulan[i]?.tanggal_pengumpulan %> - <%= data_pengumpulan[i]?.waktu_pengumpulan %></p>
                             <div style="display: flex; flex-direction: row-reverse;">
                                 <a href="/mahasiswa/kuliah/tugas/detail/<%= data_tugas[i].id_tugas %>" class="card-link">Detail Tugas</a>
                             </div>

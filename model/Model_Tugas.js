@@ -1,6 +1,15 @@
 db = require(`../config/db`)
 
 class Model_Tugas{
+    static getNowTugasByJadwal(id){
+        return new Promise((resolve, reject) => {
+            db.query(`select * from tugas where id_jadwal = ? order by id_tugas desc LIMIT 1`, [id], (err, rows) => {
+                if(err) return reject(err)
+                resolve(rows[0])
+            })
+        })
+    }
+
     static getTugasByJadwal(id_jadwal) {
         return new Promise((resolve, reject) => {
             db.query(`select * from tugas where id_jadwal = ?`, [id_jadwal], (err, rows) => {

@@ -1,6 +1,15 @@
 db = require(`../config/db`)
 
 class Model_Materi{
+    static getNowMateriByJadwal(id){
+        return new Promise((resolve, reject) => {
+            db.query(`select * from materi where id_jadwal = ? order by id_jadwal desc LIMIT 1`, [id], (err, rows) => {
+                if(err) return reject(err)
+                resolve(rows[0])
+            })
+        })
+    }
+
     static getMateriByJadwal(id_jadwal) {
         return new Promise((resolve, reject) => {
             db.query(`select * from materi where id_jadwal = ?`, [id_jadwal], (err, rows) => {
