@@ -153,6 +153,7 @@
                             <th scope="col">NRP</th>
                             <th scope="col">Catatan</th>
                             <th scope="col">Lampiran</th>
+                            <th scope="col">status</th>
                         </tr>
                         </thead>
                         <tbody class="table-group-divider">
@@ -163,6 +164,7 @@
                                     <td>
                                         <a href="<%= pengumpulan[i].file_pengumpulan %>"><%= nama_file_pengumpulan[i] %></a>
                                     </td>
+                                    <td><%= pengumpulan[i].status_pengumpulan %></td>
                                 </tr>
                             <% } %>
                         </tbody>
