@@ -1,26 +1,389 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-    <a href="/login" class="btn btn-primary btn-sm">Login</a>
-    <a href="/register" class="btn btn-warning btn-sm">Register</a>
 
-    <form action="mahasiswa/storetugas" enctype="multipart/form-data" method="post">
-      <input type="file" name="file_pengumpulan">
-      <button>kirim</button>
-    </form>
-    <h3>edit</h3>
-    <form action="mahasiswa/editpengumpulan" enctype="multipart/form-data" method="post">
-      <input type="file" name="file_pengumpulan">
-      <button>kirim</button>
-    </form>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Landing Page - SiKAP</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  </body>
+  <!-- Favicons -->
+  <!-- <link href="assets/img/favicon.png" rel="icon"> -->
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1 class="sitename">SiKAP</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#login">Login</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+
+      <div id="hero-carousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <div class="carousel-container">
+            <h2 class="animate__animated animate__fadeInDown">Selamat Datang di <span>SiKAP</span></h2>
+            <p class="animate__animated animate__fadeInUp">Sistem Kehadiran Perkuliahan (SiKAP) adalah platform terintegrasi yang dirancang untuk memudahkan proses perkuliahan, mulai dari presensi, pengumpulan tugas, hingga akses materi kuliah, semuanya dalam satu tempat.</p>
+            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+          </div>
+        </div>
+
+      </div>
+
+      <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+        <defs>
+          <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+        </defs>
+        <g class="wave1">
+          <use xlink:href="#wave-path" x="50" y="3"></use>
+        </g>
+        <g class="wave2">
+          <use xlink:href="#wave-path" x="50" y="0"></use>
+        </g>
+        <g class="wave3">
+          <use xlink:href="#wave-path" x="50" y="9"></use>
+        </g>
+      </svg>
+
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>About</h2>
+        <p>Who we are</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+            <p>
+              SiKAP (Sistem Kehadiran Prekuliahan) adalah sebuah platform digital yang dikembangkan untuk mempermudah proses akademik di lingkungan perguruan tinggi. Kami memahami tantangan yang dihadapi oleh mahasiswa dan dosen dalam mengelola perkuliahan, mulai dari presensi hingga pengumpulan tugas dan akses materi. Oleh karena itu, SiKAP hadir sebagai solusi terpadu yang membantu menciptakan ekosistem pembelajaran yang lebih teratur, efisien, dan terintegrasi.
+            </p>
+            <!-- <ul>
+              <li><i class="bi bi-check2-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
+              <li><i class="bi bi-check2-circle"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
+              <li><i class="bi bi-check2-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo</span></li>
+            </ul> -->
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <p><b>Visi</b> : Menjadi sistem presensi yang terintegrasi dan efisien, mendukung proses pembelajaran yang lebih baik dan terorganisir bagi mahasiswa dan dosen.</p>
+            <p><b>Misi</b> : SiKAP menyediakan platform terpadu untuk presensi, tugas, dan materi perkuliahan, mempermudah pengelolaan waktu dan akademik bagi mahasiswa dan dosen.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Features Section -->
+    <section id="features" class="features section">
+
+      <div class="container">
+
+        <ul class="nav nav-tabs row  d-flex" data-aos="fade-up" data-aos-delay="100">
+          <li class="nav-item col-3">
+            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
+              <i class="bi bi-app-indicator"></i>
+              <h4 class="d-none d-lg-block">Presensi Mudah dan Cepat</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
+              <i class="bi bi-file-earmark-text"></i>
+              <h4 class="d-none d-lg-block">Pengumpulan Tugas Terintegrasi</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
+              <i class="bi bi-opencollective"></i>
+              <h4 class="d-none d-lg-block">Akses Materi Kuliah</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-4">
+              <i class="bi bi-calendar"></i>
+              <h4 class="d-none d-lg-block">Jadwal Kuliah Terintegrasi</h4>
+            </a>
+          </li>
+        </ul><!-- End Tab Nav -->
+
+        <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="tab-pane fade active show" id="features-tab-1">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Presensi Digital yang Mudah dan Cepat</h3>
+                <p class="fst-italic">
+                  SiKAP menawarkan sistem presensi yang cepat dan efisien. Mahasiswa dapat melakukan absensi secara online melalui website, mengurangi waktu yang dihabiskan untuk presensi manual. Dosen juga dapat memantau kehadiran mahasiswa dengan mudah melalui dashboard yang tersedia.
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i>
+                    <span><b>Apa itu?</b> SiKAP menyediakan sistem presensi yang memungkinkan mahasiswa untuk melakukan absensi secara online.</span>
+                  </li>
+                  <li><i class="bi bi-check2-all"></i> <span><b>Bagaimana cara kerjanya?</b> Mahasiswa cukup membuka aplikasi SiKAP, mencari kelas yang diikuti, dan menekan tombol untuk absensi. Proses ini jauh lebih cepat dibandingkan dengan presensi manual, yang seringkali memakan waktu.</span>.</li>
+                  <li><i class="bi bi-check2-all"></i> <span><b>Manfaat?</b> Dosen dapat melihat data kehadiran mahasiswa secara real-time, memudahkan mereka dalam memantau partisipasi setiap mahasiswa.</span></li>
+                </ul>
+
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="assets/img/working-1.png" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End Tab Content Item -->
+
+          <div class="tab-pane fade" id="features-tab-2">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Pengumpulan Tugas yang Terintegrasi</h3>
+                <p class="fst-italic">
+                  Mahasiswa dapat mengumpulkan tugas secara langsung melalui website. Dosen dapat dengan mudah menerima dan melihat tugas yang dikumpulkan oleh mahasiswa, menjadikan proses penilaian lebih efisien.
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span><b>Apa itu?</b> SiKAP memungkinkan mahasiswa untuk mengumpulkan tugas secara langsung di website.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span><b>Bagaimana cara kerjanya?</b> Mahasiswa dapat mengunggah tugas mereka di website.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span><b>Manfaat?</b> Dosen dapat dengan cepat menerima dan melihat tugas yang dikumpulkan. Proses ini membuat penilaian tugas menjadi lebih efisien dan terorganisir.</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="assets/img/working-2.png" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End Tab Content Item -->
+
+          <div class="tab-pane fade" id="features-tab-3">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Akses Materi Perkuliahan</h3>
+                <p class="fst-italic">
+                  SiKAP memfasilitasi akses ke semua materi kuliah yang disediakan oleh dosen seperti modul, slide presentasi, atau catatan perkuliahan. Mahasiswa dapat mengunduh atau mengakses materi kapan saja, mendukung pembelajaran mandiri di luar jam kuliah.
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span><b>Apa itu?</b> SiKAP menyediakan semua materi kuliah dalam satu tempat.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span><b>Jenis materi apa yang tersedia?</b> Materi yang bisa diakses termasuk catatan kuliah atau modul, slide presentasi, dan video pembelajaran.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span><b>Manfaat?</b>  Mahasiswa dapat mengunduh atau mengakses materi kapan saja dan di mana saja, mendukung mereka dalam belajar secara mandiri di luar jam kuliah.</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="assets/img/working-3.png" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End Tab Content Item -->
+
+          <div class="tab-pane fade" id="features-tab-4">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Jadwal Kuliah yang Jelas dan Terintegrasi</h3>
+                <p class="fst-italic">
+                  SiKAP memudahkan mahasiswa untuk selalu mengetahui jadwal kuliah mereka. Jadwal kuliah yang telah diatur oleh dosen atau admin kampus dapat diakses secara langsung dari website, sehingga mahasiswa dapat mengelola waktu mereka dengan lebih baik. Mahasiswa tidak perlu khawatir lagi akan melewatkan perkuliahan karena seluruh jadwal tersusun rapi dan mudah dilihat kapan saja.
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span><b>Apa itu?</b> SiKAP menampilkan jadwal kuliah yang rinci untuk setiap mahasiswa.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span><b>Bagaimana cara kerjanya?</b> Mahasiswa dapat melihat waktu dan lokasi kelas secara langsung di website, begitu pula dengan Dosen.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span><b>Manfaat?</b> Dengan informasi yang selalu terbaru, mahasiswa tidak akan ketinggalan jadwal kuliah dan bisa merencanakan waktu mereka dengan lebih baik.</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="assets/img/working-4.png" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End Tab Content Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Features Section -->
+
+    <!-- Call To Action Section -->
+    <section id="call-to-action" class="call-to-action section dark-background">
+
+      <div class="container">
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-xl-9 text-center text-xl-start">
+            <h3>Mulai Sekarang!</h3>
+            <p>Bergabunglah dengan SiKAP dan nikmati kemudahan dalam mengelola kehadiran, tugas, dan materi kuliah dalam satu platform terintegrasi.</p>
+          </div>
+          <div class="col-xl-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="#">Login</a>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Call To Action Section -->
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Services</h2>
+        <p>Why Use SiKAP</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item  position-relative">
+              <div class="icon">
+                <i class="bi bi-ui-checks-grid" style="color: #0dcaf0;"></i>
+              </div>
+              <div class="stretched-link">
+                <h3>Platform Terintegrasi </h3>
+              </div>
+              <p>SiKAP menggabungkan presensi, jadwal kuliah, tugas, dan materi dalam satu sistem yang mudah diakses.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-chat-text" style="color: #fd7e14;"></i>
+              </div>
+              <div class="stretched-link">
+                <h3>Mudah Digunakan</h3>
+              </div>
+              <p>Dengan antarmuka yang sederhana dan intuitif, SiKAP memudahkan mahasiswa dan dosen dalam mengelola perkuliahan.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-calendar4-week" style="color: #20c997;"></i>
+              </div>
+              <div class="stretched-link">
+                <h3>Jadwal Kuliah yang Jelas</h3>
+              </div>
+              <p>Mahasiswa dapat melihat jadwal kuliah dengan mudah, tanpa khawatir akan perubahan atau kelas yang terlewat.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-credit-card-2-front" style="color: #df1529;"></i>
+              </div>
+              <div class="stretched-link">
+                <h3>Rekap Kehadiran dan Tugas yang Transparan</h3>
+              </div>
+              <p>Mahasiswa dapat melihat riwayat kehadiran dan tugas yang telah dikumpulkan .</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-clipboard-data" style="color: #6610f2;"></i>
+              </div>
+              <div class="stretched-link">
+                <h3>Dukungan Pengelolaan Data Akademik oleh Dosen</h3>
+              </div>
+              <p>Dosen dapat dengan mudah memantau kehadiran dan kinerja mahasiswa yang terorganisir. Data kehadiran dan tugas mahasiswa tersimpan secara otomatis yang memudahkan dosen</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-clock" style="color: #f3268c;"></i>
+              </div>
+              <div class="stretched-link">
+                <h3>Pengalaman Belajar Terstruktur</h3>
+              </div>
+              <p>Dengan akses terorganisir ke jadwal dan materi, mahasiswa dapat merencanakan belajar dengan lebih baik.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container">
+      <h3 class="sitename">SiKAP</h3>
+      <p>"Mengintegrasikan Kehadiran dan Tugas untuk Pengalaman Kuliah yang Lebih Teratur"</p>
+      <div class="container">
+        <div class="copyright">
+          <span>© Copyright Team Dev</span><strong class="px-1 sitename">SiKAP</strong>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
 </html>
