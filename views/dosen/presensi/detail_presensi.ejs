@@ -13,7 +13,7 @@
             <header>
                 <div class="image-text">
                     <span class="image">
-                        <img src="/images/logo_hitam.png" alt="logo">
+                        <img src="/images/logo_PENS.png" alt="logo">
                     </span>
 
                     <div class="text header-text">
@@ -98,88 +98,37 @@
 
 
         <div class="container-presensi">
-            <div class="card presensi" style="width: 55%;">
-                <div class="card-body presensi">
-                    <div class="title-header">
-                        <h4 style="margin-bottom: -2px;"><%= jadwalDetail.nama_matakuliah %></h5>
-                    </div>
-                    <div class="info-container">
-                        <p><span class="label">Dosen</span> : <%= jadwalDetail.nama_dosen %></p>
-                        <p><span class="label">NIP</span> : <%= jadwalDetail.nip %></p>
-                        <p><span class="label">Waktu</span> : <%= jadwalDetail.hari %> (<%= jadwalDetail.waktu %>)</p>
-                        <p><span class="label">Ruangan</span> : <%= jadwalDetail.nama_ruangan %></p>
-                        <p><span class="label">Presensi Terakhir</span> : <%= presensiSekarang?.hari || `` %>, <%= presensiSekarang?.tanggal || `` %> - <%= presensiSekarang?.waktu_buka || `` %></p>
-                    </div>
-                    <div class="presensi-button">
-                        <form action="<%= statusPresensi == 'terbuka' ? '/dosen/tutup_presensi' : '/dosen/buka_presensi'%>" method="post" style="width: 95%;">
-                            <% if (statusPresensi == "terbuka") { %>
-                                <input type="hidden" name="id_jadwal" value="<%= jadwalDetail.id_jadwal %>">            
-                                <input type="hidden" name="id_presensi" value="<%= presensiSekarang?.id_presensi %>">
-                                <button type="submit" class="btn btn-warning">TUTUP PRESENSI</button>
-                            <% } %>
-                            <% if (statusPresensi == "tertutup") { %>
-                                <input type="hidden" name="id_jadwal" value="<%= jadwalDetail.id_jadwal %>">            
-                                <button type="submit" class="btn btn-success">BUKA PRESENSI</button>
-                            <% } %>
-                        </form>
-                        <button type="button" class="btn btn-secondary" >KONFERENSI SiKAP</button>
-                        <button type="button" class="btn btn-secondary ">KONFERENSI LAINNYA</button>
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div class="card" style="width: 40%;">
-                <div class="card-body card-color">
-                    <h5 class="card-title">History Presensi</h5>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">TANGGAL</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% for( let i = 0; i < data_presensi.length; i++ ) { %>
-                                <a style="display: block;" href="">
-                                    <tr>
-                                        <td><%= data_presensi[i].id_presensi %></td>
-                                        <td><%= data_presensi[i].hari %>, <%= data_presensi[i].tanggal %> - <%= data_presensi[i].waktu_buka %></td>
-                                    </tr>
-                                </a>
-                            <% } %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            
 
             <div class="card" style="width: 98%;">
                 <div class="card-body card-color">
-                    <h5 class="card-title">Peserta Kuliah</h5>
+                    <h5 class="card-title">Peserta Presensi</h5>
                     <div class="search-container">
                         <input type="text" id="searchInput" placeholder="Cari berdasarkan NRP, Nama, atau Jenis Kelamin..." />
                         <div class="info-peserta">
-                            <p><span class="label">Laki - Laki</span> : <%= jml_lk %></p>
-                            <p><span class="label">Perempuan</span> : <%= jml_pr %></p>
-                            <p><span class="label">Total</span> : <%= jumlah %></p>
+                            <p><span class="label">Sudah Presensi</span> : 12</p>
+                            <p><span class="label">Belum Presensi</span> : 5</p>
+                            <p><span class="label">Total</span> : 15</p>
                         </div>
                     </div>
                     <table class="table">
                         <thead>
                             <tr>
+                                <th scope="col">WAKTU</th>
                                 <th scope="col">NRP</th>
                                 <th scope="col">NAMA</th>
-                                <th scope="col">JENIS KELAMIN</th>
+                                <th scope="col">AKSI</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <% for( let i = 0; i < mahasiswa.length; i++ ) { %>
-                                <tr>
-                                    <td><%= mahasiswa[i].nrp %></td>
-                                    <td><%= mahasiswa[i].nama_mahasiswa %></td>
-                                    <td><%= mahasiswa[i].jenis_kelamin %></td>
-                                </tr>
-                            <% } %>
+                            <tr>
+                                <td>Kamis, 19 September 2024 - 11:53:05</td>
+                                <td>3123522001</td>
+                                <td>Ibram Maulana Akhsanul Qasasi</td>
+                                <td>
+                                    <a href="" class="btn btn-sm btn-danger ">HAPUS</a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

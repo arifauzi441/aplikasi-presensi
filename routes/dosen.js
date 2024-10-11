@@ -115,6 +115,12 @@ router.get(`/kuliah/presensi/:id`, async (req, res, next) => {
     })
 })
 
+router.get('/kuliah/presensi/detail', async (req, res, next) => {
+    
+    res.render(`dosen/presensi/detail_presensi`)
+})
+
+
 router.post(`/buka_presensi`, async(req, res, next) => {
     try {
         let {id_jadwal} = req.body
