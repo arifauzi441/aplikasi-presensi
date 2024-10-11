@@ -420,8 +420,6 @@ router.post(`/kuliah/materi/:id/store`, upload.single(`file_materi`), async (req
             waktu_upload
         }
         await Model_Materi.addMateri(data)
-
-        console.log(data)
         
         res.redirect(`/dosen/kuliah/materi/${id_jadwal}`)
     } catch (error) {

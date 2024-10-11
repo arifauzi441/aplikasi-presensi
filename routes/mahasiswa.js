@@ -46,7 +46,6 @@ router.use(auth)
 router.get('/beranda', async (req, res, next) => {
     let mahasiswa = await Model_Mahasiswa.getByIdUser(req.session.userId)
     let jadwal = await Model_Jadwal.getJadwalByMahasiswa(req.session.userId)
-    console.log(mahasiswa)
     res.render(`mahasiswa/landing_page/pagelanding`,{mahasiswa, jadwal})
 });
 
@@ -226,15 +225,21 @@ router.post(`/storepengumpulan/:id`, upload.single(`file_pengumpulan`), async (r
         let menit = String(waktuSekarang.getMinutes()).padStart(2, `0`)
         let detik = String(waktuSekarang.getSeconds()).padStart(2, `0`)
         let waktu_pengumpulan = `${jam}:${menit}:${detik}`
-
+        
         let namaHari = [`minggu`,`senin`,`selasa`,`rabu`,`kamis`,`jumat`,`sabtu`]
         let hari_pengumpulan = namaHari[waktuSekarang.getDay()]
-
+        
         let tahunSekarang = waktuSekarang.getFullYear()
         let bulanSekarang = String(waktuSekarang.getMonth() + 1).padStart(2, `0`)
         let hariSekarang = String(waktuSekarang.getDate()).padStart(2, `0`)
         let tanggal_pengumpulan = `${tahunSekarang}-${bulanSekarang}-${hariSekarang}`
-    
+        let tanggal_pengumpulan_mm = new Date(tanggal_pengumpulan + "T" + waktu_pengumpulan)
+        
+        let status_pengumpulan = "tepat waktu"
+        let tugasDetail = await Model_Tugas.getTugasById(id_tugas)
+        let tanggal_deadline_mm = new Date(tugasDetail.tanggal_deadline.toLocaleDateString(`en-CA`) + "T" + tugasDetail.waktu_deadline)
+        if(tanggal_deadline_mm.getTime() < tanggal_pengumpulan_mm.getTime()) status_pengumpulan = "terlambat" 
+
         let data = {
             file_pengumpulan,
             id_tugas,
@@ -242,7 +247,8 @@ router.post(`/storepengumpulan/:id`, upload.single(`file_pengumpulan`), async (r
             deskripsi,
             waktu_pengumpulan,
             hari_pengumpulan,
-            tanggal_pengumpulan
+            tanggal_pengumpulan,
+            status_pengumpulan
         }
         await Model_Pengumpulan.addPengumpulan(data)
         
@@ -259,6 +265,26 @@ router.post(`/updatepengumpulan/:id`, upload.single(`file_pengumpulan`), async (
         let {deskripsi} = req.body
         let dataPengumpulan = await Model_Pengumpulan.getPengumpulanById(id_pengumpulan)
 
+        let waktuSekarang = new Date()
+        let jam = String(waktuSekarang.getHours()).padStart(2, `0`)
+        let menit = String(waktuSekarang.getMinutes()).padStart(2, `0`)
+        let detik = String(waktuSekarang.getSeconds()).padStart(2, `0`)
+        let waktu_pengumpulan = `${jam}:${menit}:${detik}`
+        
+        let namaHari = [`minggu`,`senin`,`selasa`,`rabu`,`kamis`,`jumat`,`sabtu`]
+        let hari_pengumpulan = namaHari[waktuSekarang.getDay()]
+        
+        let tahunSekarang = waktuSekarang.getFullYear()
+        let bulanSekarang = String(waktuSekarang.getMonth() + 1).padStart(2, `0`)
+        let hariSekarang = String(waktuSekarang.getDate()).padStart(2, `0`)
+        let tanggal_pengumpulan = `${tahunSekarang}-${bulanSekarang}-${hariSekarang}`
+        let tanggal_pengumpulan_mm = new Date(tanggal_pengumpulan + "T" + waktu_pengumpulan)
+        
+        let status_pengumpulan = "tepat waktu"
+        let tugasDetail = await Model_Tugas.getTugasById(dataPengumpulan.id_tugas)
+        let tanggal_deadline_mm = new Date(tugasDetail.tanggal_deadline.toLocaleDateString(`en-CA`) + "T" + tugasDetail.waktu_deadline)
+        if(tanggal_deadline_mm.getTime() < tanggal_pengumpulan_mm.getTime()) status_pengumpulan = "terlambat"
+
         let file_pengumpulan = ``
         file_pengumpulan = (req.file) ? `/pengumpulan/${req.file.filename}` : dataPengumpulan.file_pengumpulan
 
@@ -267,7 +293,14 @@ router.post(`/updatepengumpulan/:id`, upload.single(`file_pengumpulan`), async (
             fs.unlinkSync(pathFileLama)
         }
 
-        data = {file_pengumpulan, deskripsi}
+        data = {
+            file_pengumpulan, 
+            deskripsi, 
+            hari_pengumpulan, 
+            tanggal_pengumpulan,
+            status_pengumpulan,
+            waktu_pengumpulan
+        }
         await Model_Pengumpulan.updatePengumpulan(data, id_pengumpulan)
         res.redirect(`/mahasiswa/kuliah/tugas/detail/${dataPengumpulan.id_tugas}`)
     } catch (error) {
