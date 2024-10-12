@@ -459,32 +459,39 @@
     width: 85%;
     margin: 10px;
     padding: 20px;
-    border: 1px solid black;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0.5, 0.5);
+    box-shadow: 1.5px 3px 4px rgba(77, 75, 75, 0.5);
     background-color: #DFE4E5;
 }
 .presensi-button .btn-secondary{
-    border: 1px solid black;
+    box-shadow: 0 3px 2px rgba(77, 75, 75, 0.5);
     color: #000;
     background-color: #A7B3B8;
     width: 45%;
 
 }.presensi-button .btn-success{
-    border: 1px solid black;
+    box-shadow: 0 3px 2px rgba(77, 75, 75, 0.5);
     color: #000;
     background-color: #B0DEBC;
     width: 100%;
     margin-bottom: 30px;
 
 }.presensi-button .btn-warning{
-    border: 1px solid black;
+    box-shadow: 0 3px 2px rgba(77, 75, 75, 0.5);
     color: #000;
     background-color: #ffc107;
     width: 100%;
     margin-bottom: 30px;
 
 }
+
+.hr-horizontal{
+    width: 100%;
+    height: 1px;
+    background-color: var(--text-color);
+    margin-block: 10px 25px;
+}
+
 
 .table {
     border-collapse: separate;
