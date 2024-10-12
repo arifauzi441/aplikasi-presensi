@@ -492,6 +492,19 @@
     padding: 0 10px; /* Menambahkan padding di kiri dan kanan untuk spasi */
     flex-wrap: nowrap;
     color: #000;
+    cursor: pointer;
+}
+.file-link{
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    padding-left: 7px;
+    padding-top: 8px;
+    border-radius: 10px;
+    height: 40px;
+    width: 40px;
+}.file-link:hover{
+    background-color:#B4C6CB ;
 }
 
 
