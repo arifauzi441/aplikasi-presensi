@@ -469,6 +469,13 @@
     background-color: #A7B3B8;
     width: 45%;
 
+}.presensi-button .btn-secondary.presence-btn{
+    box-shadow: 0 3px 2px rgba(77, 75, 75, 0.5);
+    color: #000;
+    background-color: #A7B3B8;
+    width: 100%;
+    margin-bottom: 30px;
+
 }.presensi-button .btn-success{
     box-shadow: 0 3px 2px rgba(77, 75, 75, 0.5);
     color: #000;

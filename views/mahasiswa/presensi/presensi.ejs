@@ -113,7 +113,7 @@
                         <form action="/mahasiswa/presensi" method="post" style="width: 95%;">
                             <input type="hidden" name="id_jadwal" value="<%= jadwalDetail.id_jadwal %>">
                             <input type="hidden" name="id_presensi" value="<%= presensiSekarang?.id_presensi %>">
-                            <button type="submit" class="btn btn-success" <%= statusPresensi == "belum selesai" ? " " : "disabled" %>>PRESENSI</button>
+                            <button type="submit" class="btn <%= statusPresensi == "belum selesai" ? "btn-success" : "btn-secondary presence-btn"%>" <%= statusPresensi == "belum selesai" ? " " : "disabled" %>>PRESENSI</button>
                         </form>
                         <button type="button" class="btn btn-secondary" >KONFERENSI SiKAP</button>
                         <button type="button" class="btn btn-secondary ">KONFERENSI LAINNYA</button>

@@ -154,8 +154,11 @@ router.post(`/buka_presensi`, async(req, res, next) => {
         let {id_jadwal} = req.body
 
         let dataPresensi = await Model_Presensi.getNowPresensiByJadwal(id_jadwal)
+        let dosen = await Model_Dosen.getByIdUser(req.session.userId)
+        let jadwalSekarang = await Model_Jadwal.getId(id_jadwal)
+        if(jadwalSekarang.id_dosen !== dosen.id_dosen) return res.redirect(`/login`)
+            
         let pertemuan = ""
-
         if(!dataPresensi) pertemuan = "pertemuan 1"
         else 
             pertemuan = dataPresensi.pertemuan.replace(/\d+$/,(p) =>{
@@ -170,10 +173,6 @@ router.post(`/buka_presensi`, async(req, res, next) => {
         
         let namaHari = [`minggu`,`senin`,`selasa`,`rabu`,`kamis`,`jumat`,`sabtu`]
         let hari = namaHari[waktuSekarang.getDay()]
-
-        let dosen = await Model_Dosen.getByIdUser(req.session.userId)
-        let jadwalSekarang = await Model_Jadwal.getId(id_jadwal)
-        if(jadwalSekarang.id_dosen !== dosen.id_dosen) return res.redirect(`/login`)
 
         let [waktuJadwalBuka,waktuJadwalTutup] = jadwalSekarang.waktu.split(` - `)
         let [jamJadwalBuka,menitJadwalBuka] = waktuJadwalBuka.split(`:`).map(Number)
