@@ -23,7 +23,7 @@ routes.post('/store', async (req, res, next) => {
         let { nama_ruangan } = req.body;
         let data = { nama_ruangan };
         await Model_Ruangan.store(data);
-        res.redirect('/ruangan');
+        res.redirect('/admin/ruangan');
     } catch (err) {
         console.log(err);
         next(err);
@@ -50,7 +50,7 @@ routes.post('/update/:id', async (req, res, next) => {
         let { nama_ruangan } = req.body;
         let data = { nama_ruangan };
         await Model_Ruangan.update(id, data);
-        res.redirect('/ruangan');
+        res.redirect('/admin/ruangan');
     } catch (err) {
         console.log(err);
         next(err);
@@ -61,7 +61,7 @@ routes.get('/delete/:id', async (req, res, next) => {
     try {
         let id = req.params.id;
         await Model_Ruangan.delete(id);
-        res.redirect('/ruangan');
+        res.redirect('/admin/ruangan');
     } catch (err) {
         console.log(err);
         next(err);

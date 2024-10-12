@@ -141,12 +141,10 @@
                         </thead>
                         <tbody>
                             <% for( let i = 0; i < data_presensi.length; i++ ) { %>
-                                <a style="display: block;" href="">
-                                    <tr>
-                                        <td><%= data_presensi[i].id_presensi %></td>
-                                        <td><%= data_presensi[i].hari %>, <%= data_presensi[i].tanggal %> - <%= data_presensi[i].waktu_buka %></td>
-                                    </tr>
-                                </a>
+                                <tr style="color: white;">
+                                    <td><%= data_presensi[i].id_presensi %></td>
+                                    <td><a href="/dosen/kuliah/presensi/detail/<%= data_presensi[i].id_presensi %>" style="cursor: pointer; color: black; text-decoration: none;"><%= data_presensi[i].hari %>, <%= data_presensi[i].tanggal %> - <%= data_presensi[i].waktu_buka %></a></td>
+                                </tr>
                             <% } %>
                         </tbody>
                     </table>
