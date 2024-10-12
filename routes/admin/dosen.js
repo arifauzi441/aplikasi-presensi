@@ -18,7 +18,9 @@ routes.get('/', async (req, res, next) => {
 routes.get('/create', async (req, res, next) => {
     try {
         let users = await Model_Users.getAll();
+        let userEmail = req.session.userEmail || '';
         res.render('users/admin/dosen/create', {
+            userEmail,
             users
         });
     } catch (err) {
@@ -29,9 +31,12 @@ routes.get('/create', async (req, res, next) => {
 
 routes.post('/store', async (req, res, next) => {
     try {
-        let { nama_dosen, nip, jenis_kelamin, id_users } = req.body;
+        let email = req.session.userEmail;
+        let { nama_dosen, nip, jenis_kelamin } = req.body;
+        let id_users = await Model_Users.getIdByEmail(email);
         let data = { nama_dosen, nip, jenis_kelamin, id_users };
         await Model_Dosen.store(data);
+        req.session.userEmail = null;
         res.redirect('/admin/dosen');
     } catch (err) {
         console.log(err);

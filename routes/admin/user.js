@@ -5,9 +5,7 @@ const Model_Users = require('../../model/Model_Users');
 routes.get('/', async (req, res, next) => {
     try {
         let data = await Model_Users.getAll();
-        res.render('users/admin/users/index', {
-            data
-        });
+        res.render('users/admin/users/index', { data });
     } catch (err) {
         console.log(err);
         next(err);
@@ -15,7 +13,10 @@ routes.get('/', async (req, res, next) => {
 });
 
 routes.get('/create', (req, res, next) => {
-    res.render('users/admin/users/create');
+    let userEmail = req.session.userEmail || '';
+    res.render('users/admin/users/create', { 
+        userEmail 
+    }); 
 });
 
 routes.post('/store', async (req, res, next) => {
@@ -23,7 +24,18 @@ routes.post('/store', async (req, res, next) => {
         let { email, password, level_users } = req.body;
         let data = { email, password, level_users };
         await Model_Users.storeData(data);
-        res.redirect('/admin/user');
+
+        // Simpan email ke session untuk digunakan di halaman mahasiswa/dosen
+        req.session.userEmail = email;
+
+        // Redirect berdasarkan level_users
+        if (level_users === 'mahasiswa') {
+            return res.redirect('/admin/mahasiswa/create');
+        } else if (level_users === 'dosen') {
+            return res.redirect('/admin/dosen/create');
+        }
+
+        res.redirect('/admin/user'); // Redirect ke halaman user jika level admin
     } catch (err) {
         console.log(err);
         next(err);

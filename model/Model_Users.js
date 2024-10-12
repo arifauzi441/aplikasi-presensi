@@ -1,69 +1,81 @@
-const db = require(`../config/db`)
+const db = require(`../config/db`);
 
-class Model_Users{
-    static getAll(){
+class Model_Users {
+    static getAll() {
         return new Promise((resolve, reject) => {
             db.query(`select * from users order by id_users`, (err, rows) => {
-                if(err) return reject(err)
-                resolve(rows)
-            })
-        })
+                if (err) return reject(err);
+                resolve(rows);
+            });
+        });
     }
     
-    static getEmail(email){
+    static getEmail(email) {
         return new Promise((resolve, reject) => {
             db.query(`select * from users where email = ?`, [email], (err, rows) => {
-                if(err) return reject(err)
-                resolve(rows[0])
-            })
-        })
+                if (err) return reject(err);
+                resolve(rows[0]);
+            });
+        });
     }
 
-    static getUserId(userId){
+    static getUserId(userId) {
         return new Promise((resolve, reject) => {
             db.query(`select * from users where id_users = ?`, [userId], (err, rows) => {
-                if(err) return reject(err)
-                resolve(rows[0])
-            })
-        })
+                if (err) return reject(err);
+                resolve(rows[0]);
+            });
+        });
     }
-    
-    static storeData(data){
+
+    static getIdByEmail(email) {
+        return new Promise((resolve, reject) => {
+            db.query(`select id_users from users where email = ?`, [email], (err, rows) => {
+                if (err) return reject(err);
+                if (rows.length > 0) {
+                    resolve(rows[0].id_users);
+                } else {
+                    resolve(null);
+                }
+            });
+        });
+    }
+
+    static storeData(data) {
         return new Promise((resolve, reject) => {
             db.query(`insert into users set ?`, data, (err, rows) => {
-                if(err) return reject(err)
-                resolve(rows)
-            })
-        })
+                if (err) return reject(err);
+                resolve(rows);
+            });
+        });
     }
 
-    static updateData(id, data){
+    static updateData(id, data) {
         return new Promise((resolve, reject) => {
-            db.query(`update users set ? where id_users = ?`, [id, data], (err, rows) => {
-                if(err) return reject(err)
-                resolve(rows)
-            })
-        })
+            db.query(`update users set ? where id_users = ?`, [data, id], (err, rows) => {
+                if (err) return reject(err);
+                resolve(rows);
+            });
+        });
     }
     
-    static deleteData(id){
+    static deleteData(id) {
         return new Promise((resolve, reject) => {
             db.query(`delete from users where id_users = ?`, [id], (err, rows) => {
-                if(err) return reject(err)
-                resolve(rows)
-            })
-        })
+                if (err) return reject(err);
+                resolve(rows);
+            });
+        });
     }
     
-    static getUserMahasiswa(id){
+    static getUserMahasiswa(id) {
         return new Promise((resolve, reject) => {
-            db.query(`select * from users u join mahasiswa m on u.id_users = m.id_users where id_users = ?`, [id], (err, rows) => {
-                if(err) return reject(err)
-                resolve(rows)
-            })
-        })
+            db.query(`select * from users u join mahasiswa m on u.id_users = m.id_users where u.id_users = ?`, [id], (err, rows) => {
+                if (err) return reject(err);
+                resolve(rows);
+            });
+        });
     }
-
 }
 
-module.exports = Model_Users
+module.exports = Model_Users;
