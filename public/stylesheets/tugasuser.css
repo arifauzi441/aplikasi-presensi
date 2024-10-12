@@ -518,6 +518,7 @@
 }.card-link{
     color: #000;
     text-decoration: none;
+    cursor: pointer;
 }.card-link:hover{
     text-decoration: underline;
 }
