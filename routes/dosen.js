@@ -11,6 +11,7 @@ const Model_Presensi = require('../model/Model_Presensi');
 const Model_Tugas = require('../model/Model_Tugas');
 const Model_Materi = require(`../model/Model_Materi`);
 const Model_Pengumpulan = require('../model/Model_Pengumpulan');
+const Model_History_Presensi = require(`../model/Model_History_Presensi`)
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -115,11 +116,38 @@ router.get(`/kuliah/presensi/:id`, async (req, res, next) => {
     })
 })
 
-router.get('/kuliah/presensi/detail', async (req, res, next) => {
-    
-    res.render(`dosen/presensi/detail_presensi`)
+router.get('/kuliah/presensi/detail/:id', async (req, res, next) => {
+    let id_presensi = req.params.id
+    let historyPresensi = await Model_History_Presensi.getHistoryPresensiByPresensi(id_presensi)
+    let presensi = await Model_Presensi.getById(id_presensi)
+    let jadwalDetail = await Model_Jadwal.getId(presensi.id_jadwal)
+    let dosen = await Model_Dosen.getByIdUser(req.session.userId)
+
+    if(jadwalDetail.id_dosen !== dosen.id_dosen) return res.redirect(`/login`)
+
+    presensi.tanggal = presensi.tanggal.toLocaleDateString(`en-CA`)
+
+    res.render(`dosen/presensi/detail_presensi`, {historyPresensi, presensi})
 })
 
+router.get(`/kuliah/presensi/detail/delete/:id`, async (req, res, next) => {
+    let id_history_presensi = req.params.id
+    let id_presensi = await Model_History_Presensi.getById(id_history_presensi)
+    try {
+        let presensi = await Model_Presensi.getById(id_presensi)
+        let jadwalDetail = await Model_Jadwal.getId(presensi.id_jadwal)
+        let dosen = await Model_Dosen.getByIdUser(req.session.userId)
+        
+        if(jadwalDetail.id_dosen !== dosen.id_dosen) return res.redirect(`/login`)
+
+        await Model_History_Presensi.deleteHistoryPresensi(id_history_presensi)
+
+        res.redirect(`/dosen/kuliah/presensi/detail/${id_presensi}`)
+    } catch (error) {
+        console.log(error)
+        res.redirect(`/dosen/kuliah/presensi/detail/${id_presensi}`)
+    }
+})
 
 router.post(`/buka_presensi`, async(req, res, next) => {
     try {
