@@ -8,14 +8,6 @@ var flash = require(`express-flash`);
 
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
-var adminjurusanRouter = require('./routes/admin/jurusan');
-var adminkelasRouter = require('./routes/admin/kelas');
-var adminmatakuliahRouter = require('./routes/admin/matakuliah');
-var adminruanganRouter = require('./routes/admin/ruangan');
-var adminjadwalRouter = require('./routes/admin/jadwal');
-var adminuserRouter = require('./routes/admin/user');
-var adminmahasiswaRouter = require('./routes/admin/mahasiswa');
-var admindosenRouter = require('./routes/admin/dosen');
 var mahasiswaRouter = require(`./routes/mahasiswa`)
 var dosenRouter = require(`./routes/dosen`)
 
@@ -43,14 +35,6 @@ app.use(flash());
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
-app.use('/admin/jurusan', adminjurusanRouter);
-app.use('/admin/kelas', adminkelasRouter);
-app.use('/admin/matakuliah', adminmatakuliahRouter);
-app.use('/admin/ruangan', adminruanganRouter);
-app.use('/admin/jadwal', adminjadwalRouter);
-app.use('/admin/user', adminuserRouter);
-app.use('/admin/mahasiswa', adminmahasiswaRouter);
-app.use('/admin/dosen', admindosenRouter);
 app.use('/mahasiswa', mahasiswaRouter);
 app.use('/dosen', dosenRouter);
 
