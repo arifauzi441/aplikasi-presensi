@@ -1,10 +1,11 @@
 <%- include('../partials/__head.ejs') %>
 <%- include('../partials/__nav.ejs') %>
+
 <div class="content-wrapper d-flex align-items-center justify-content-center">
     <div class="col grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Tambah Mahasiswa</h4> 
+                <h4 class="card-title">Tambah Mahasiswa</h4>
                 <form action="/admin/mahasiswa/store" method="POST" class="forms-sample">
                     <div class="form-group">
                         <label for="nama_mahasiswa">Nama Mahasiswa</label>
@@ -38,12 +39,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="id_users">User</label>
-                        <select class="form-control" id="id_users" name="id_users" required>
-                            <% users.forEach(function(user) { %>
-                                <option value="<%= user.id_users %>"><%= user.email %></option>
-                            <% }); %>
-                        </select>
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="<%= userEmail %>" readonly>
                     </div>
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
                     <button type="button" class="btn btn-light" onclick="history.back()">Cancel</button>
@@ -52,4 +49,5 @@
         </div>
     </div>
 </div>
+
 <%- include('../partials/__foot.ejs') %>

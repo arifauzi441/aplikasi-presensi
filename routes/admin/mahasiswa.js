@@ -22,9 +22,11 @@ routes.get('/create', async (req, res, next) => {
         let kelas = await Model_Kelas.getAll();
         let jurusan = await Model_Jurusan.getAll();
         let users = await Model_Users.getAll();
+        let userEmail = req.session.userEmail || '';
         res.render('users/admin/mahasiswa/create', {
             kelas,
             jurusan,
+            userEmail,
             users
         });
     } catch (err) {
@@ -35,15 +37,33 @@ routes.get('/create', async (req, res, next) => {
 
 routes.post('/store', async (req, res, next) => {
     try {
-        let { nama_mahasiswa, nrp, jenis_kelamin, id_kelas, id_jurusan, id_users } = req.body;
+        let { nama_mahasiswa, nrp, jenis_kelamin, id_kelas, id_jurusan } = req.body;
+
+        // Ambil email dari session
+        let email = req.session.userEmail; // Ambil email pengguna dari session
+        
+        // Pastikan email tidak null atau undefined
+        if (!email) {
+            return res.status(400).send("Email not found in session."); // Jika tidak ada email, kembalikan error
+        }
+
+        // Dapatkan id_users berdasarkan email
+        let id_users = await Model_Users.getIdByEmail(email); // Fungsi ini mencari id_users berdasarkan email
+
         let data = { nama_mahasiswa, nrp, jenis_kelamin, id_kelas, id_jurusan, id_users };
+
         await Model_Mahasiswa.store(data);
+        
+        // Hapus email dari session setelah menyimpan data
+        req.session.userEmail = null; 
+        
         res.redirect('/admin/mahasiswa');
     } catch (err) {
         console.log(err);
         next(err);
     }
 });
+
 
 routes.get('/edit/:id', async (req, res, next) => {
     try {
