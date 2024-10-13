@@ -38,25 +38,21 @@ routes.get('/create', async (req, res, next) => {
 routes.post('/store', async (req, res, next) => {
     try {
         let { nama_mahasiswa, nrp, jenis_kelamin, id_kelas, id_jurusan } = req.body;
-
-        // Ambil email dari session
-        let email = req.session.userEmail; // Ambil email pengguna dari session
-        
-        // Pastikan email tidak null atau undefined
+        let email = req.session.userEmail;
         if (!email) {
-            return res.status(400).send("Email not found in session."); // Jika tidak ada email, kembalikan error
+            return res.status(400).send("Email not found in session."); 
         }
-
-        // Dapatkan id_users berdasarkan email
-        let id_users = await Model_Users.getIdByEmail(email); // Fungsi ini mencari id_users berdasarkan email
-
-        let data = { nama_mahasiswa, nrp, jenis_kelamin, id_kelas, id_jurusan, id_users };
-
+        let id_users = await Model_Users.getIdByEmail(email); 
+        let data = { 
+            nama_mahasiswa, 
+            nrp, 
+            jenis_kelamin, 
+            id_kelas, 
+            id_jurusan, 
+            id_users 
+        };
         await Model_Mahasiswa.store(data);
-        
-        // Hapus email dari session setelah menyimpan data
         req.session.userEmail = null; 
-        
         res.redirect('/admin/mahasiswa');
     } catch (err) {
         console.log(err);
