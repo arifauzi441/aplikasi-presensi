@@ -287,12 +287,14 @@
     width: calc(100% - 85px);
     background-color: var(--body-color);
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     height: auto;
     justify-content: center;
     align-items: center;
+    align-items: stretch;
     margin-top: 50px;
-    margin-bottom: 50px;
+    padding-bottom: 50px;
 }
 
 .crt1 .container{
@@ -305,7 +307,6 @@
     flex-direction: column;
     border: 1.5px solid #000;
     margin: 20px;
-
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2), 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
