@@ -407,13 +407,14 @@
     justify-content: center;
     align-items: center;
     margin-top: 50px;
-    margin-bottom: 50px;
+    padding-bottom: 50px;
 }
 /*detail tugas */
 .container-tugas .card {
     overflow: hidden;
     border: 2px solid #000 !important; /* Tambahkan !important */
     border-radius: 10px !important; /* Tambahkan !important jika diperlukan */
+    align-self: stretch;
 }
 
 .card{
