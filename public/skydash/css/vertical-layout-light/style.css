@@ -28500,6 +28500,7 @@ div.tagsinput span.tag a {
   z-index: 999;
 }
 
+/* before_click */
 .sidebar .nav .nav-item .nav-link {
   display: -webkit-flex;
   display: flex;
@@ -28507,7 +28508,7 @@ div.tagsinput span.tag a {
   align-items: center;
   white-space: nowrap;
   padding: 0.8125rem 1.937rem 0.8125rem 1rem;
-  color: #6C7383;
+  color: black;
   border-radius: 8px;
   -webkit-transition-duration: 0.45s;
   -moz-transition-duration: 0.45s;
@@ -28593,8 +28594,10 @@ div.tagsinput span.tag a {
   border-radius: 8px;
 }
 
+
+/* Dashboard */
 .sidebar .nav .nav-item.active > .nav-link {
-  background: #025589;
+  background: black;
   position: relative;
 }
 
@@ -28624,8 +28627,9 @@ div.tagsinput span.tag a {
   margin-top: .2rem;
 }
 
+/* side_before */
 .sidebar .nav:not(.sub-menu) > .nav-item:hover > .nav-link, .sidebar .nav:not(.sub-menu) > .nav-item:hover[aria-expanded="true"] {
-  background: #025589;
+  background: black;
   color: #fff;
 }
 
@@ -28633,9 +28637,10 @@ div.tagsinput span.tag a {
   margin: 0;
 }
 
+/* side_biru */
 .sidebar .nav:not(.sub-menu) > .nav-item > .nav-link[aria-expanded="true"] {
   border-radius: 8px 8px 0 0;
-  background: #025589;
+  background: black;
   color: #fff;
 }
 
@@ -29999,7 +30004,7 @@ div.tagsinput span.tag a {
   }
   .sidebar-icon-only .sidebar .nav .nav-item .nav-link .menu-title {
     border-radius: 0 5px 5px 0px;
-    background: #025589;
+    background: black;
   }
   .rtl.sidebar-icon-only .sidebar .nav .nav-item .nav-link .menu-title {
     border-radius: 5px 0 0 5px;
