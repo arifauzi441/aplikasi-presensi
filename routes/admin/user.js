@@ -24,18 +24,13 @@ routes.post('/store', async (req, res, next) => {
         let { email, password, level_users } = req.body;
         let data = { email, password, level_users };
         await Model_Users.storeData(data);
-
-        // Simpan email ke session untuk digunakan di halaman mahasiswa/dosen
         req.session.userEmail = email;
-
-        // Redirect berdasarkan level_users
         if (level_users === 'mahasiswa') {
             return res.redirect('/admin/mahasiswa/create');
         } else if (level_users === 'dosen') {
             return res.redirect('/admin/dosen/create');
         }
-
-        res.redirect('/admin/user'); // Redirect ke halaman user jika level admin
+        res.redirect('/admin/user');
     } catch (err) {
         console.log(err);
         next(err);

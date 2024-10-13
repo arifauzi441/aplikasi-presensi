@@ -34,7 +34,11 @@ routes.post('/store', async (req, res, next) => {
         let email = req.session.userEmail;
         let { nama_dosen, nip, jenis_kelamin } = req.body;
         let id_users = await Model_Users.getIdByEmail(email);
-        let data = { nama_dosen, nip, jenis_kelamin, id_users };
+        let data = { 
+            nama_dosen, 
+            nip, 
+            jenis_kelamin, 
+            id_users };
         await Model_Dosen.store(data);
         req.session.userEmail = null;
         res.redirect('/admin/dosen');
